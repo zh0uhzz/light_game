@@ -58,7 +58,7 @@ struct Level: Codable, Identifiable {
         chapterNumber >= 2
     }
 
-    /// 卡片难度星：1–7 章内前 4 关 ★、后 5 关 ★★（递增）；8–9 章均为 ★★★；第 10 章特殊关 ★；无限模式均为 ★★ 或 ★★★。
+    /// 卡片难度星：1–5 章前 4 关 ★、其余 ★★；第 6–7 章前两关 ★★、后 7 关 ★★★；8–9 章 ★★★；10 章 ★；无限随难度。
     var homeStarTier: Int {
         if chapterId == "inf" {
             let d = difficultyRank ?? 5
@@ -66,6 +66,10 @@ struct Level: Codable, Identifiable {
         }
         if chapterNumber >= 10 { return 1 }
         if chapterNumber >= 8 { return 3 }
+        if chapterNumber >= 6 {
+            let idx = levelIndexInChapter
+            return idx < 2 ? 2 : 3
+        }
         let idx = levelIndexInChapter
         return idx < 4 ? 1 : 2
     }

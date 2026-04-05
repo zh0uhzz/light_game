@@ -1922,9 +1922,9 @@
               "direction": "left"
             }
           ],
-          "maxBulbs": 3,
-          "parScore": 3,
-          "optimalBulbs": 3,
+          "maxBulbs": 4,
+          "parScore": 4,
+          "optimalBulbs": 4,
           "difficultyRank": 32
         },
         {
@@ -1974,9 +1974,9 @@
               "direction": "down"
             }
           ],
-          "maxBulbs": 2,
-          "optimalBulbs": 2,
-          "parScore": 2,
+          "maxBulbs": 3,
+          "optimalBulbs": 3,
+          "parScore": 3,
           "difficultyRank": 33
         },
         {
@@ -2092,9 +2092,9 @@
               "direction": "left"
             }
           ],
-          "maxBulbs": 3,
-          "optimalBulbs": 3,
-          "parScore": 3,
+          "maxBulbs": 4,
+          "optimalBulbs": 4,
+          "parScore": 4,
           "difficultyRank": 35
         },
         {
@@ -2169,9 +2169,9 @@
               "direction": "left"
             }
           ],
-          "maxBulbs": 3,
-          "optimalBulbs": 3,
-          "parScore": 3,
+          "maxBulbs": 4,
+          "optimalBulbs": 4,
+          "parScore": 4,
           "difficultyRank": 36
         }
       ]
@@ -2543,25 +2543,301 @@
     },
     {
       "id": "ch6",
-      "title": "第六章 镜缝",
+      "title": "第六章 折射与反射",
       "levels": [
         {
           "id": "ch6_l1",
           "chapterId": "ch6",
-          "title": "镜缝合鸣",
+          "title": "缝框借穿",
           "gridSize": 7,
           "radiusSet": [
             1.0
           ],
           "blockedCells": [
             {
+              "row": 0,
+              "col": 0
+            },
+            {
+              "row": 0,
+              "col": 1
+            },
+            {
+              "row": 0,
+              "col": 2
+            },
+            {
+              "row": 0,
+              "col": 3
+            },
+            {
+              "row": 0,
+              "col": 4
+            },
+            {
+              "row": 0,
+              "col": 5
+            },
+            {
+              "row": 0,
+              "col": 6
+            },
+            {
+              "row": 1,
+              "col": 0
+            },
+            {
+              "row": 1,
+              "col": 6
+            },
+            {
+              "row": 2,
+              "col": 0
+            },
+            {
+              "row": 2,
+              "col": 6
+            },
+            {
+              "row": 3,
+              "col": 0
+            },
+            {
+              "row": 3,
+              "col": 6
+            },
+            {
+              "row": 4,
+              "col": 0
+            },
+            {
+              "row": 4,
+              "col": 6
+            },
+            {
+              "row": 5,
+              "col": 0
+            },
+            {
+              "row": 5,
+              "col": 6
+            },
+            {
+              "row": 6,
+              "col": 0
+            },
+            {
+              "row": 6,
+              "col": 1
+            },
+            {
+              "row": 6,
+              "col": 2
+            },
+            {
+              "row": 6,
+              "col": 3
+            },
+            {
+              "row": 6,
+              "col": 4
+            },
+            {
+              "row": 6,
+              "col": 5
+            },
+            {
+              "row": 6,
+              "col": 6
+            },
+            {
               "row": 1,
               "col": 1
+            },
+            {
+              "row": 1,
+              "col": 3
+            },
+            {
+              "row": 1,
+              "col": 4
+            },
+            {
+              "row": 1,
+              "col": 5
             }
           ],
           "targetMask": [
             {
+              "row": 1,
+              "col": 2
+            },
+            {
               "row": 2,
+              "col": 1
+            },
+            {
+              "row": 3,
+              "col": 2
+            },
+            {
+              "row": 3,
+              "col": 4
+            },
+            {
+              "row": 4,
+              "col": 2
+            }
+          ],
+          "mirrorCells": [],
+          "slitMirrorCells": [
+            {
+              "row": 3,
+              "col": 3
+            }
+          ],
+          "optimalBulbs": 2,
+          "maxBulbs": 2,
+          "parScore": 2,
+          "difficultyRank": 46
+        },
+        {
+          "id": "ch6_l2",
+          "chapterId": "ch6",
+          "title": "单镜渡隙",
+          "gridSize": 7,
+          "radiusSet": [
+            1.0
+          ],
+          "blockedCells": [
+            {
+              "row": 0,
+              "col": 0
+            },
+            {
+              "row": 0,
+              "col": 1
+            },
+            {
+              "row": 0,
+              "col": 2
+            },
+            {
+              "row": 0,
+              "col": 3
+            },
+            {
+              "row": 0,
+              "col": 4
+            },
+            {
+              "row": 0,
+              "col": 5
+            },
+            {
+              "row": 0,
+              "col": 6
+            },
+            {
+              "row": 1,
+              "col": 0
+            },
+            {
+              "row": 1,
+              "col": 6
+            },
+            {
+              "row": 2,
+              "col": 0
+            },
+            {
+              "row": 2,
+              "col": 6
+            },
+            {
+              "row": 3,
+              "col": 0
+            },
+            {
+              "row": 3,
+              "col": 6
+            },
+            {
+              "row": 4,
+              "col": 0
+            },
+            {
+              "row": 4,
+              "col": 6
+            },
+            {
+              "row": 5,
+              "col": 0
+            },
+            {
+              "row": 5,
+              "col": 6
+            },
+            {
+              "row": 6,
+              "col": 0
+            },
+            {
+              "row": 6,
+              "col": 1
+            },
+            {
+              "row": 6,
+              "col": 2
+            },
+            {
+              "row": 6,
+              "col": 3
+            },
+            {
+              "row": 6,
+              "col": 4
+            },
+            {
+              "row": 6,
+              "col": 5
+            },
+            {
+              "row": 6,
+              "col": 6
+            },
+            {
+              "row": 1,
+              "col": 1
+            },
+            {
+              "row": 1,
+              "col": 3
+            },
+            {
+              "row": 1,
+              "col": 4
+            },
+            {
+              "row": 1,
+              "col": 5
+            }
+          ],
+          "targetMask": [
+            {
+              "row": 1,
+              "col": 2
+            },
+            {
+              "row": 2,
+              "col": 1
+            },
+            {
+              "row": 3,
+              "col": 2
+            },
+            {
+              "row": 3,
               "col": 4
             },
             {
@@ -2571,9 +2847,68 @@
           ],
           "mirrorCells": [
             {
+              "row": 5,
+              "col": 4,
+              "direction": "left"
+            }
+          ],
+          "slitMirrorCells": [
+            {
               "row": 3,
+              "col": 3
+            }
+          ],
+          "optimalBulbs": 2,
+          "maxBulbs": 2,
+          "parScore": 2,
+          "difficultyRank": 47
+        },
+        {
+          "id": "ch6_l3",
+          "chapterId": "ch6",
+          "title": "双镜分辉",
+          "gridSize": 7,
+          "radiusSet": [
+            1.0
+          ],
+          "blockedCells": [
+            {
+              "row": 2,
+              "col": 2
+            },
+            {
+              "row": 4,
+              "col": 2
+            }
+          ],
+          "targetMask": [
+            {
+              "row": 1,
+              "col": 5
+            },
+            {
+              "row": 3,
+              "col": 1
+            },
+            {
+              "row": 3,
+              "col": 5
+            },
+            {
+              "row": 4,
+              "col": 3
+            }
+          ],
+          "mirrorCells": [
+            {
+              "row": 1,
               "col": 3,
               "direction": "up"
+            },
+            {
+              "row": 5,
+              "col": 1,
+              "direction": "down"
             }
           ],
           "slitMirrorCells": [
@@ -2585,53 +2920,92 @@
           "optimalBulbs": 2,
           "maxBulbs": 2,
           "parScore": 2,
-          "difficultyRank": 46
+          "difficultyRank": 48
         },
         {
-          "id": "ch6_l2",
+          "id": "ch6_l4",
           "chapterId": "ch6",
-          "title": "折缝并进",
+          "title": "三镜联防",
           "gridSize": 7,
           "radiusSet": [
             1.0
           ],
-          "blockedCells": [],
+          "blockedCells": [
+            {
+              "row": 1,
+              "col": 2
+            },
+            {
+              "row": 1,
+              "col": 5
+            },
+            {
+              "row": 3,
+              "col": 3
+            },
+            {
+              "row": 4,
+              "col": 1
+            },
+            {
+              "row": 5,
+              "col": 3
+            }
+          ],
           "targetMask": [
             {
               "row": 1,
               "col": 3
             },
             {
-              "row": 5,
-              "col": 3
+              "row": 2,
+              "col": 1
             },
             {
-              "row": 3,
+              "row": 2,
+              "col": 4
+            },
+            {
+              "row": 4,
+              "col": 5
+            },
+            {
+              "row": 5,
               "col": 5
             }
           ],
           "mirrorCells": [
             {
-              "row": 2,
+              "row": 4,
+              "col": 3,
+              "direction": "left"
+            },
+            {
+              "row": 5,
+              "col": 1,
+              "direction": "left"
+            },
+            {
+              "row": 3,
               "col": 2,
-              "direction": "right"
+              "direction": "left"
             }
           ],
           "slitMirrorCells": [
             {
-              "row": 3,
-              "col": 3
+              "row": 2,
+              "col": 2
             }
           ],
-          "optimalBulbs": 3,
-          "maxBulbs": 3,
-          "parScore": 3,
-          "difficultyRank": 47
+          "optimalBulbs": 2,
+          "maxBulbs": 2,
+          "parScore": 2,
+          "difficultyRank": 49
         },
         {
-          "id": "ch6_l3",
+          "id": "ch6_l5",
           "chapterId": "ch6",
-          "title": "斜晖穿缝",
+          "title": "双镜借缝",
           "gridSize": 7,
           "radiusSet": [
             1.0
@@ -2643,6 +3017,66 @@
             },
             {
               "row": 0,
+              "col": 1
+            },
+            {
+              "row": 0,
+              "col": 2
+            },
+            {
+              "row": 0,
+              "col": 3
+            },
+            {
+              "row": 0,
+              "col": 4
+            },
+            {
+              "row": 0,
+              "col": 5
+            },
+            {
+              "row": 0,
+              "col": 6
+            },
+            {
+              "row": 1,
+              "col": 0
+            },
+            {
+              "row": 1,
+              "col": 6
+            },
+            {
+              "row": 2,
+              "col": 0
+            },
+            {
+              "row": 2,
+              "col": 6
+            },
+            {
+              "row": 3,
+              "col": 0
+            },
+            {
+              "row": 3,
+              "col": 6
+            },
+            {
+              "row": 4,
+              "col": 0
+            },
+            {
+              "row": 4,
+              "col": 6
+            },
+            {
+              "row": 5,
+              "col": 0
+            },
+            {
+              "row": 5,
               "col": 6
             },
             {
@@ -2651,23 +3085,76 @@
             },
             {
               "row": 6,
+              "col": 1
+            },
+            {
+              "row": 6,
+              "col": 2
+            },
+            {
+              "row": 6,
+              "col": 3
+            },
+            {
+              "row": 6,
+              "col": 4
+            },
+            {
+              "row": 6,
+              "col": 5
+            },
+            {
+              "row": 6,
               "col": 6
+            },
+            {
+              "row": 1,
+              "col": 1
+            },
+            {
+              "row": 1,
+              "col": 3
+            },
+            {
+              "row": 1,
+              "col": 4
+            },
+            {
+              "row": 1,
+              "col": 5
             }
           ],
           "targetMask": [
             {
+              "row": 1,
+              "col": 2
+            },
+            {
               "row": 2,
+              "col": 1
+            },
+            {
+              "row": 3,
+              "col": 2
+            },
+            {
+              "row": 3,
               "col": 4
             },
             {
               "row": 4,
-              "col": 4
+              "col": 2
             }
           ],
           "mirrorCells": [
             {
               "row": 4,
-              "col": 3,
+              "col": 2,
+              "direction": "down"
+            },
+            {
+              "row": 2,
+              "col": 5,
               "direction": "left"
             }
           ],
@@ -2677,136 +3164,67 @@
               "col": 3
             }
           ],
-          "optimalBulbs": 1,
-          "maxBulbs": 1,
-          "parScore": 1,
-          "difficultyRank": 48
-        },
-        {
-          "id": "ch6_l4",
-          "chapterId": "ch6",
-          "title": "回波借缝",
-          "gridSize": 7,
-          "radiusSet": [
-            1.0
-          ],
-          "blockedCells": [],
-          "targetMask": [
-            {
-              "row": 1,
-              "col": 1
-            },
-            {
-              "row": 5,
-              "col": 5
-            },
-            {
-              "row": 3,
-              "col": 0
-            }
-          ],
-          "mirrorCells": [
-            {
-              "row": 3,
-              "col": 4,
-              "direction": "down"
-            }
-          ],
-          "slitMirrorCells": [
-            {
-              "row": 3,
-              "col": 2
-            }
-          ],
-          "optimalBulbs": 3,
-          "maxBulbs": 3,
-          "parScore": 3,
-          "difficultyRank": 49
-        },
-        {
-          "id": "ch6_l5",
-          "chapterId": "ch6",
-          "title": "双边镜缝",
-          "gridSize": 7,
-          "radiusSet": [
-            1.0
-          ],
-          "blockedCells": [],
-          "targetMask": [
-            {
-              "row": 2,
-              "col": 0
-            },
-            {
-              "row": 2,
-              "col": 6
-            },
-            {
-              "row": 4,
-              "col": 3
-            }
-          ],
-          "mirrorCells": [
-            {
-              "row": 3,
-              "col": 1,
-              "direction": "up"
-            },
-            {
-              "row": 3,
-              "col": 5,
-              "direction": "up"
-            }
-          ],
-          "slitMirrorCells": [
-            {
-              "row": 3,
-              "col": 3
-            }
-          ],
-          "optimalBulbs": 3,
-          "maxBulbs": 3,
-          "parScore": 3,
+          "optimalBulbs": 2,
+          "maxBulbs": 2,
+          "parScore": 2,
           "difficultyRank": 50
         },
         {
           "id": "ch6_l6",
           "chapterId": "ch6",
-          "title": "幽角叠照",
+          "title": "狭缝深演",
           "gridSize": 7,
           "radiusSet": [
             1.0
           ],
           "blockedCells": [
             {
-              "row": 0,
-              "col": 0
+              "row": 1,
+              "col": 1
             },
             {
-              "row": 6,
-              "col": 6
+              "row": 2,
+              "col": 1
+            },
+            {
+              "row": 3,
+              "col": 3
+            },
+            {
+              "row": 3,
+              "col": 4
+            },
+            {
+              "row": 3,
+              "col": 5
+            },
+            {
+              "row": 5,
+              "col": 5
             }
           ],
           "targetMask": [
             {
               "row": 1,
-              "col": 4
+              "col": 5
+            },
+            {
+              "row": 3,
+              "col": 2
             },
             {
               "row": 4,
-              "col": 1
-            }
-          ],
-          "mirrorCells": [
+              "col": 4
+            },
             {
-              "row": 2,
-              "col": 3,
-              "direction": "right"
+              "row": 5,
+              "col": 2
             }
           ],
+          "mirrorCells": [],
           "slitMirrorCells": [
             {
-              "row": 3,
+              "row": 4,
               "col": 3
             }
           ],
@@ -2818,36 +3236,72 @@
         {
           "id": "ch6_l7",
           "chapterId": "ch6",
-          "title": "镜语透水",
+          "title": "三灯穿缝",
           "gridSize": 7,
           "radiusSet": [
             1.0
           ],
-          "blockedCells": [],
-          "targetMask": [
+          "blockedCells": [
             {
-              "row": 0,
-              "col": 3
+              "row": 1,
+              "col": 1
             },
             {
-              "row": 6,
-              "col": 3
+              "row": 2,
+              "col": 4
+            },
+            {
+              "row": 4,
+              "col": 4
+            }
+          ],
+          "targetMask": [
+            {
+              "row": 3,
+              "col": 1
             },
             {
               "row": 3,
-              "col": 6
+              "col": 4
+            },
+            {
+              "row": 5,
+              "col": 2
+            },
+            {
+              "row": 5,
+              "col": 3
+            },
+            {
+              "row": 5,
+              "col": 5
             }
           ],
           "mirrorCells": [
             {
-              "row": 3,
+              "row": 1,
+              "col": 3,
+              "direction": "down"
+            },
+            {
+              "row": 2,
+              "col": 3,
+              "direction": "up"
+            },
+            {
+              "row": 4,
               "col": 1,
-              "direction": "right"
+              "direction": "down"
+            },
+            {
+              "row": 4,
+              "col": 2,
+              "direction": "left"
             }
           ],
           "slitMirrorCells": [
             {
-              "row": 3,
+              "row": 5,
               "col": 4
             }
           ],
@@ -2859,29 +3313,59 @@
         {
           "id": "ch6_l8",
           "chapterId": "ch6",
-          "title": "远端借辉",
+          "title": "镜缝交响",
           "gridSize": 7,
           "radiusSet": [
             1.0
           ],
-          "blockedCells": [],
-          "targetMask": [
+          "blockedCells": [
+            {
+              "row": 1,
+              "col": 3
+            },
             {
               "row": 2,
-              "col": 2
+              "col": 1
+            },
+            {
+              "row": 2,
+              "col": 3
             },
             {
               "row": 4,
-              "col": 2
+              "col": 1
+            },
+            {
+              "row": 5,
+              "col": 3
+            }
+          ],
+          "targetMask": [
+            {
+              "row": 3,
+              "col": 1
             },
             {
               "row": 3,
               "col": 5
+            },
+            {
+              "row": 4,
+              "col": 3
+            },
+            {
+              "row": 5,
+              "col": 1
             }
           ],
           "mirrorCells": [
             {
-              "row": 3,
+              "row": 1,
+              "col": 1,
+              "direction": "left"
+            },
+            {
+              "row": 2,
               "col": 2,
               "direction": "down"
             }
@@ -2892,45 +3376,82 @@
               "col": 4
             }
           ],
-          "optimalBulbs": 2,
-          "maxBulbs": 2,
-          "parScore": 2,
+          "optimalBulbs": 3,
+          "maxBulbs": 3,
+          "parScore": 3,
           "difficultyRank": 53
         },
         {
           "id": "ch6_l9",
           "chapterId": "ch6",
-          "title": "镜缝小歇",
+          "title": "终试冕光",
           "gridSize": 7,
           "radiusSet": [
             1.0
           ],
-          "blockedCells": [],
-          "targetMask": [
+          "blockedCells": [
             {
               "row": 1,
-              "col": 2
-            },
-            {
-              "row": 5,
               "col": 4
             },
             {
               "row": 2,
+              "col": 4
+            },
+            {
+              "row": 3,
+              "col": 2
+            },
+            {
+              "row": 3,
+              "col": 3
+            },
+            {
+              "row": 3,
+              "col": 4
+            },
+            {
+              "row": 4,
+              "col": 1
+            },
+            {
+              "row": 4,
+              "col": 3
+            }
+          ],
+          "targetMask": [
+            {
+              "row": 2,
+              "col": 2
+            },
+            {
+              "row": 3,
               "col": 5
+            },
+            {
+              "row": 4,
+              "col": 4
+            },
+            {
+              "row": 5,
+              "col": 1
+            },
+            {
+              "row": 5,
+              "col": 4
             }
           ],
           "mirrorCells": [
             {
-              "row": 4,
-              "col": 2,
-              "direction": "left"
+              "row": 1,
+              "col": 1,
+              "direction": "down"
             }
           ],
           "slitMirrorCells": [
             {
-              "row": 3,
-              "col": 3
+              "row": 5,
+              "col": 2
             }
           ],
           "optimalBulbs": 3,
@@ -2947,151 +3468,236 @@
         {
           "id": "ch7_l1",
           "chapterId": "ch7",
-          "title": "迷宫浅影",
+          "title": "迁镜渡缝",
           "gridSize": 8,
           "radiusSet": [
             1.0
           ],
           "blockedCells": [
             {
-              "row": 2,
-              "col": 2
+              "row": 0,
+              "col": 0
+            },
+            {
+              "row": 0,
+              "col": 5
             },
             {
               "row": 1,
-              "col": 5
-            }
-          ],
-          "targetMask": [
-            {
-              "row": 0,
               "col": 3
             },
             {
-              "row": 7,
-              "col": 4
+              "row": 2,
+              "col": 0
             },
             {
-              "row": 4,
+              "row": 3,
               "col": 7
-            },
-            {
-              "row": 3,
-              "col": 0
-            }
-          ],
-          "mirrorCells": [
-            {
-              "row": 5,
-              "col": 3,
-              "direction": "up"
-            }
-          ],
-          "slitMirrorCells": [
-            {
-              "row": 3,
-              "col": 4
-            }
-          ],
-          "optimalBulbs": 4,
-          "maxBulbs": 4,
-          "parScore": 4,
-          "difficultyRank": 55
-        },
-        {
-          "id": "ch7_l2",
-          "chapterId": "ch7",
-          "title": "三缝叠序",
-          "gridSize": 8,
-          "radiusSet": [
-            1.0
-          ],
-          "blockedCells": [],
-          "targetMask": [
-            {
-              "row": 2,
-              "col": 2
-            },
-            {
-              "row": 2,
-              "col": 5
-            },
-            {
-              "row": 5,
-              "col": 5
-            }
-          ],
-          "mirrorCells": [],
-          "slitMirrorCells": [
-            {
-              "row": 4,
-              "col": 3
-            },
-            {
-              "row": 4,
-              "col": 4
-            }
-          ],
-          "optimalBulbs": 3,
-          "maxBulbs": 3,
-          "parScore": 3,
-          "difficultyRank": 56
-        },
-        {
-          "id": "ch7_l3",
-          "chapterId": "ch7",
-          "title": "镜阵微开",
-          "gridSize": 8,
-          "radiusSet": [
-            1.0
-          ],
-          "blockedCells": [
-            {
-              "row": 0,
-              "col": 0
-            }
-          ],
-          "targetMask": [
-            {
-              "row": 3,
-              "col": 2
             },
             {
               "row": 5,
               "col": 6
             },
             {
-              "row": 7,
+              "row": 6,
               "col": 3
+            },
+            {
+              "row": 7,
+              "col": 0
+            },
+            {
+              "row": 7,
+              "col": 6
+            }
+          ],
+          "targetMask": [
+            {
+              "row": 1,
+              "col": 2
+            },
+            {
+              "row": 2,
+              "col": 1
+            },
+            {
+              "row": 3,
+              "col": 2
+            },
+            {
+              "row": 3,
+              "col": 4
+            },
+            {
+              "row": 4,
+              "col": 2
             }
           ],
           "mirrorCells": [
             {
-              "row": 2,
-              "col": 4,
-              "direction": "right"
-            },
-            {
-              "row": 6,
+              "row": 5,
               "col": 4,
               "direction": "left"
             }
           ],
           "slitMirrorCells": [
             {
+              "row": 3,
+              "col": 3
+            }
+          ],
+          "optimalBulbs": 2,
+          "maxBulbs": 2,
+          "parScore": 2,
+          "difficultyRank": 55
+        },
+        {
+          "id": "ch7_l2",
+          "chapterId": "ch7",
+          "title": "双折偕行",
+          "gridSize": 8,
+          "radiusSet": [
+            1.0
+          ],
+          "blockedCells": [
+            {
+              "row": 0,
+              "col": 7
+            },
+            {
+              "row": 4,
+              "col": 2
+            },
+            {
+              "row": 7,
+              "col": 1
+            },
+            {
+              "row": 7,
+              "col": 7
+            }
+          ],
+          "targetMask": [
+            {
+              "row": 1,
+              "col": 5
+            },
+            {
+              "row": 3,
+              "col": 1
+            },
+            {
+              "row": 3,
+              "col": 5
+            },
+            {
               "row": 4,
               "col": 3
             }
           ],
-          "optimalBulbs": 3,
-          "maxBulbs": 3,
-          "parScore": 3,
+          "mirrorCells": [
+            {
+              "row": 1,
+              "col": 3,
+              "direction": "up"
+            },
+            {
+              "row": 5,
+              "col": 1,
+              "direction": "down"
+            }
+          ],
+          "slitMirrorCells": [
+            {
+              "row": 3,
+              "col": 2
+            }
+          ],
+          "optimalBulbs": 2,
+          "maxBulbs": 2,
+          "parScore": 2,
+          "difficultyRank": 56
+        },
+        {
+          "id": "ch7_l3",
+          "chapterId": "ch7",
+          "title": "三镜再演",
+          "gridSize": 8,
+          "radiusSet": [
+            1.0
+          ],
+          "blockedCells": [
+            {
+              "row": 0,
+              "col": 7
+            },
+            {
+              "row": 3,
+              "col": 3
+            },
+            {
+              "row": 5,
+              "col": 7
+            },
+            {
+              "row": 7,
+              "col": 4
+            }
+          ],
+          "targetMask": [
+            {
+              "row": 1,
+              "col": 3
+            },
+            {
+              "row": 2,
+              "col": 1
+            },
+            {
+              "row": 2,
+              "col": 4
+            },
+            {
+              "row": 4,
+              "col": 5
+            },
+            {
+              "row": 5,
+              "col": 5
+            }
+          ],
+          "mirrorCells": [
+            {
+              "row": 4,
+              "col": 3,
+              "direction": "left"
+            },
+            {
+              "row": 5,
+              "col": 1,
+              "direction": "left"
+            },
+            {
+              "row": 3,
+              "col": 2,
+              "direction": "left"
+            }
+          ],
+          "slitMirrorCells": [
+            {
+              "row": 2,
+              "col": 2
+            }
+          ],
+          "optimalBulbs": 2,
+          "maxBulbs": 2,
+          "parScore": 2,
           "difficultyRank": 57
         },
         {
           "id": "ch7_l4",
           "chapterId": "ch7",
-          "title": "边灯下注",
+          "title": "四折深阱",
           "gridSize": 8,
           "radiusSet": [
             1.0
@@ -3103,6 +3709,97 @@
             },
             {
               "row": 0,
+              "col": 5
+            },
+            {
+              "row": 1,
+              "col": 3
+            },
+            {
+              "row": 2,
+              "col": 0
+            },
+            {
+              "row": 3,
+              "col": 7
+            },
+            {
+              "row": 5,
+              "col": 6
+            },
+            {
+              "row": 6,
+              "col": 3
+            },
+            {
+              "row": 7,
+              "col": 0
+            },
+            {
+              "row": 7,
+              "col": 6
+            }
+          ],
+          "targetMask": [
+            {
+              "row": 1,
+              "col": 2
+            },
+            {
+              "row": 2,
+              "col": 1
+            },
+            {
+              "row": 3,
+              "col": 2
+            },
+            {
+              "row": 3,
+              "col": 4
+            },
+            {
+              "row": 4,
+              "col": 2
+            }
+          ],
+          "mirrorCells": [
+            {
+              "row": 4,
+              "col": 2,
+              "direction": "down"
+            },
+            {
+              "row": 2,
+              "col": 5,
+              "direction": "left"
+            }
+          ],
+          "slitMirrorCells": [
+            {
+              "row": 3,
+              "col": 3
+            }
+          ],
+          "optimalBulbs": 2,
+          "maxBulbs": 2,
+          "parScore": 2,
+          "difficultyRank": 58
+        },
+        {
+          "id": "ch7_l5",
+          "chapterId": "ch7",
+          "title": "三灯长缝",
+          "gridSize": 8,
+          "radiusSet": [
+            1.0
+          ],
+          "blockedCells": [
+            {
+              "row": 0,
+              "col": 7
+            },
+            {
+              "row": 3,
               "col": 7
             },
             {
@@ -3111,75 +3808,57 @@
             },
             {
               "row": 7,
-              "col": 7
+              "col": 6
             }
           ],
           "targetMask": [
             {
-              "row": 1,
+              "row": 3,
               "col": 1
             },
             {
-              "row": 6,
-              "col": 6
+              "row": 3,
+              "col": 4
             },
             {
-              "row": 4,
-              "col": 4
+              "row": 5,
+              "col": 2
+            },
+            {
+              "row": 5,
+              "col": 3
+            },
+            {
+              "row": 5,
+              "col": 5
             }
           ],
           "mirrorCells": [
-            {
-              "row": 3,
-              "col": 3,
-              "direction": "down"
-            }
-          ],
-          "slitMirrorCells": [
-            {
-              "row": 4,
-              "col": 4
-            }
-          ],
-          "optimalBulbs": 3,
-          "maxBulbs": 3,
-          "parScore": 3,
-          "difficultyRank": 58
-        },
-        {
-          "id": "ch7_l5",
-          "chapterId": "ch7",
-          "title": "隙光长跑",
-          "gridSize": 8,
-          "radiusSet": [
-            1.0
-          ],
-          "blockedCells": [],
-          "targetMask": [
             {
               "row": 1,
-              "col": 4
+              "col": 3,
+              "direction": "down"
             },
             {
-              "row": 6,
-              "col": 2
+              "row": 2,
+              "col": 3,
+              "direction": "up"
             },
-            {
-              "row": 3,
-              "col": 7
-            }
-          ],
-          "mirrorCells": [
             {
               "row": 4,
-              "col": 4,
-              "direction": "up"
+              "col": 1,
+              "direction": "down"
+            },
+            {
+              "row": 4,
+              "col": 2,
+              "direction": "left"
             }
           ],
           "slitMirrorCells": [
             {
-              "row": 4,
-              "col": 2
+              "row": 5,
+              "col": 4
             }
           ],
           "optimalBulbs": 3,
@@ -3190,88 +3869,133 @@
         {
           "id": "ch7_l6",
           "chapterId": "ch7",
-          "title": "十字镜缝",
+          "title": "交响续章",
           "gridSize": 8,
           "radiusSet": [
             1.0
           ],
           "blockedCells": [
             {
+              "row": 0,
+              "col": 7
+            },
+            {
+              "row": 2,
+              "col": 7
+            },
+            {
+              "row": 5,
+              "col": 7
+            },
+            {
+              "row": 7,
+              "col": 4
+            }
+          ],
+          "targetMask": [
+            {
               "row": 3,
+              "col": 1
+            },
+            {
+              "row": 3,
+              "col": 5
+            },
+            {
+              "row": 4,
               "col": 3
+            },
+            {
+              "row": 5,
+              "col": 1
+            }
+          ],
+          "mirrorCells": [
+            {
+              "row": 1,
+              "col": 1,
+              "direction": "left"
+            },
+            {
+              "row": 2,
+              "col": 2,
+              "direction": "down"
+            }
+          ],
+          "slitMirrorCells": [
+            {
+              "row": 3,
+              "col": 4
+            }
+          ],
+          "optimalBulbs": 2,
+          "maxBulbs": 2,
+          "parScore": 2,
+          "difficultyRank": 60
+        },
+        {
+          "id": "ch7_l7",
+          "chapterId": "ch7",
+          "title": "冕光迁格",
+          "gridSize": 8,
+          "radiusSet": [
+            1.0
+          ],
+          "blockedCells": [
+            {
+              "row": 0,
+              "col": 7
+            },
+            {
+              "row": 3,
+              "col": 2
+            },
+            {
+              "row": 4,
+              "col": 3
+            },
+            {
+              "row": 7,
+              "col": 1
+            },
+            {
+              "row": 7,
+              "col": 7
             }
           ],
           "targetMask": [
             {
               "row": 2,
-              "col": 6
+              "col": 2
+            },
+            {
+              "row": 3,
+              "col": 5
+            },
+            {
+              "row": 4,
+              "col": 4
             },
             {
               "row": 5,
               "col": 1
             },
             {
-              "row": 0,
-              "col": 4
-            }
-          ],
-          "mirrorCells": [
-            {
-              "row": 3,
-              "col": 5,
-              "direction": "right"
-            }
-          ],
-          "slitMirrorCells": [
-            {
-              "row": 4,
-              "col": 4
-            }
-          ],
-          "optimalBulbs": 3,
-          "maxBulbs": 3,
-          "parScore": 3,
-          "difficultyRank": 60
-        },
-        {
-          "id": "ch7_l7",
-          "chapterId": "ch7",
-          "title": "暗桩反光",
-          "gridSize": 8,
-          "radiusSet": [
-            1.0
-          ],
-          "blockedCells": [],
-          "targetMask": [
-            {
-              "row": 2,
-              "col": 3
-            },
-            {
               "row": 5,
-              "col": 5
-            },
-            {
-              "row": 6,
-              "col": 0
+              "col": 4
             }
           ],
           "mirrorCells": [
             {
               "row": 1,
-              "col": 4,
-              "direction": "left"
-            },
-            {
-              "row": 4,
-              "col": 2,
-              "direction": "up"
+              "col": 1,
+              "direction": "down"
             }
           ],
           "slitMirrorCells": [
             {
-              "row": 3,
-              "col": 4
+              "row": 5,
+              "col": 2
             }
           ],
           "optimalBulbs": 3,
@@ -3282,92 +4006,163 @@
         {
           "id": "ch7_l8",
           "chapterId": "ch7",
-          "title": "浮城折线",
+          "title": "叠障穿心",
           "gridSize": 8,
           "radiusSet": [
             1.0
           ],
           "blockedCells": [
             {
-              "row": 1,
-              "col": 6
-            }
-          ],
-          "targetMask": [
-            {
               "row": 0,
-              "col": 2
+              "col": 4
             },
-            {
-              "row": 7,
-              "col": 5
-            },
-            {
-              "row": 3,
-              "col": 3
-            }
-          ],
-          "mirrorCells": [
-            {
-              "row": 5,
-              "col": 4,
-              "direction": "down"
-            }
-          ],
-          "slitMirrorCells": [
-            {
-              "row": 4,
-              "col": 3
-            }
-          ],
-          "optimalBulbs": 3,
-          "maxBulbs": 3,
-          "parScore": 3,
-          "difficultyRank": 62
-        },
-        {
-          "id": "ch7_l9",
-          "chapterId": "ch7",
-          "title": "迷宫尾声",
-          "gridSize": 8,
-          "radiusSet": [
-            1.0
-          ],
-          "blockedCells": [],
-          "targetMask": [
             {
               "row": 2,
               "col": 1
             },
             {
-              "row": 5,
-              "col": 6
+              "row": 4,
+              "col": 5
             },
             {
-              "row": 4,
-              "col": 0
+              "row": 6,
+              "col": 4
+            },
+            {
+              "row": 7,
+              "col": 4
+            }
+          ],
+          "targetMask": [
+            {
+              "row": 3,
+              "col": 1
             },
             {
               "row": 3,
-              "col": 7
+              "col": 5
+            },
+            {
+              "row": 4,
+              "col": 3
+            },
+            {
+              "row": 5,
+              "col": 1
             }
           ],
           "mirrorCells": [
             {
-              "row": 3,
+              "row": 1,
+              "col": 1,
+              "direction": "left"
+            },
+            {
+              "row": 2,
               "col": 2,
-              "direction": "right"
+              "direction": "down"
             }
           ],
           "slitMirrorCells": [
             {
-              "row": 4,
+              "row": 3,
               "col": 4
             }
           ],
-          "optimalBulbs": 4,
-          "maxBulbs": 4,
-          "parScore": 4,
+          "optimalBulbs": 2,
+          "maxBulbs": 2,
+          "parScore": 2,
+          "difficultyRank": 62
+        },
+        {
+          "id": "ch7_l9",
+          "chapterId": "ch7",
+          "title": "碎阱多镜",
+          "gridSize": 8,
+          "radiusSet": [
+            1.0
+          ],
+          "blockedCells": [
+            {
+              "row": 0,
+              "col": 0
+            },
+            {
+              "row": 0,
+              "col": 5
+            },
+            {
+              "row": 1,
+              "col": 3
+            },
+            {
+              "row": 2,
+              "col": 0
+            },
+            {
+              "row": 3,
+              "col": 6
+            },
+            {
+              "row": 5,
+              "col": 0
+            },
+            {
+              "row": 6,
+              "col": 2
+            },
+            {
+              "row": 6,
+              "col": 7
+            },
+            {
+              "row": 7,
+              "col": 5
+            }
+          ],
+          "targetMask": [
+            {
+              "row": 1,
+              "col": 2
+            },
+            {
+              "row": 2,
+              "col": 1
+            },
+            {
+              "row": 3,
+              "col": 2
+            },
+            {
+              "row": 3,
+              "col": 4
+            },
+            {
+              "row": 4,
+              "col": 2
+            }
+          ],
+          "mirrorCells": [
+            {
+              "row": 4,
+              "col": 2,
+              "direction": "down"
+            },
+            {
+              "row": 2,
+              "col": 5,
+              "direction": "left"
+            }
+          ],
+          "slitMirrorCells": [
+            {
+              "row": 3,
+              "col": 3
+            }
+          ],
+          "optimalBulbs": 2,
+          "maxBulbs": 2,
+          "parScore": 2,
           "difficultyRank": 63
         }
       ]
@@ -3379,243 +4174,397 @@
         {
           "id": "ch8_l1",
           "chapterId": "ch8",
-          "title": "星云初布",
+          "title": "影廊迁镜",
           "gridSize": 8,
           "radiusSet": [
             1.0
           ],
-          "blockedCells": [],
+          "blockedCells": [
+            {
+              "row": 0,
+              "col": 0
+            },
+            {
+              "row": 0,
+              "col": 5
+            },
+            {
+              "row": 1,
+              "col": 2
+            },
+            {
+              "row": 2,
+              "col": 0
+            },
+            {
+              "row": 3,
+              "col": 7
+            },
+            {
+              "row": 5,
+              "col": 6
+            },
+            {
+              "row": 6,
+              "col": 3
+            },
+            {
+              "row": 7,
+              "col": 0
+            },
+            {
+              "row": 7,
+              "col": 6
+            }
+          ],
+          "targetMask": [
+            {
+              "row": 1,
+              "col": 4
+            },
+            {
+              "row": 2,
+              "col": 5
+            },
+            {
+              "row": 3,
+              "col": 4
+            },
+            {
+              "row": 3,
+              "col": 2
+            },
+            {
+              "row": 4,
+              "col": 4
+            }
+          ],
+          "mirrorCells": [
+            {
+              "row": 5,
+              "col": 2,
+              "direction": "right"
+            }
+          ],
+          "slitMirrorCells": [
+            {
+              "row": 3,
+              "col": 3
+            }
+          ],
+          "optimalBulbs": 2,
+          "maxBulbs": 2,
+          "parScore": 2,
+          "difficultyRank": 64
+        },
+        {
+          "id": "ch8_l2",
+          "chapterId": "ch8",
+          "title": "双线偕辉",
+          "gridSize": 8,
+          "radiusSet": [
+            1.0
+          ],
+          "blockedCells": [
+            {
+              "row": 0,
+              "col": 7
+            },
+            {
+              "row": 4,
+              "col": 4
+            },
+            {
+              "row": 7,
+              "col": 1
+            },
+            {
+              "row": 7,
+              "col": 7
+            }
+          ],
           "targetMask": [
             {
               "row": 1,
               "col": 1
             },
             {
-              "row": 2,
-              "col": 6
-            },
-            {
-              "row": 6,
-              "col": 2
-            },
-            {
-              "row": 5,
+              "row": 3,
               "col": 5
-            }
-          ],
-          "mirrorCells": [],
-          "slitMirrorCells": [
+            },
+            {
+              "row": 3,
+              "col": 1
+            },
             {
               "row": 4,
               "col": 3
             }
           ],
-          "optimalBulbs": 4,
-          "maxBulbs": 4,
-          "parScore": 4,
-          "difficultyRank": 64
-        },
-        {
-          "id": "ch8_l2",
-          "chapterId": "ch8",
-          "title": "广域一缝",
-          "gridSize": 8,
-          "radiusSet": [
-            1.0
-          ],
-          "blockedCells": [
-            {
-              "row": 0,
-              "col": 0
-            },
-            {
-              "row": 0,
-              "col": 7
-            },
-            {
-              "row": 7,
-              "col": 0
-            },
-            {
-              "row": 7,
-              "col": 7
-            }
-          ],
-          "targetMask": [
-            {
-              "row": 2,
-              "col": 2
-            },
-            {
-              "row": 2,
-              "col": 5
-            },
-            {
-              "row": 5,
-              "col": 3
-            },
-            {
-              "row": 6,
-              "col": 6
-            }
-          ],
           "mirrorCells": [
             {
-              "row": 3,
+              "row": 1,
               "col": 3,
               "direction": "up"
-            }
-          ],
-          "slitMirrorCells": [
-            {
-              "row": 4,
-              "col": 4
-            }
-          ],
-          "optimalBulbs": 4,
-          "maxBulbs": 4,
-          "parScore": 4,
-          "difficultyRank": 65
-        },
-        {
-          "id": "ch8_l3",
-          "chapterId": "ch8",
-          "title": "双镜护航",
-          "gridSize": 8,
-          "radiusSet": [
-            1.0
-          ],
-          "blockedCells": [
-            {
-              "row": 4,
-              "col": 4
-            }
-          ],
-          "targetMask": [
-            {
-              "row": 0,
-              "col": 4
-            },
-            {
-              "row": 7,
-              "col": 3
-            },
-            {
-              "row": 3,
-              "col": 0
-            }
-          ],
-          "mirrorCells": [
-            {
-              "row": 2,
-              "col": 3,
-              "direction": "right"
             },
             {
               "row": 5,
-              "col": 4,
-              "direction": "left"
-            }
-          ],
-          "slitMirrorCells": [
-            {
-              "row": 4,
-              "col": 3
-            }
-          ],
-          "optimalBulbs": 3,
-          "maxBulbs": 3,
-          "parScore": 3,
-          "difficultyRank": 66
-        },
-        {
-          "id": "ch8_l4",
-          "chapterId": "ch8",
-          "title": "遥角点灯",
-          "gridSize": 8,
-          "radiusSet": [
-            1.0
-          ],
-          "blockedCells": [],
-          "targetMask": [
-            {
-              "row": 0,
-              "col": 0
-            },
-            {
-              "row": 0,
-              "col": 7
-            },
-            {
-              "row": 7,
-              "col": 0
-            },
-            {
-              "row": 4,
-              "col": 4
-            }
-          ],
-          "mirrorCells": [
-            {
-              "row": 3,
               "col": 5,
               "direction": "down"
             }
           ],
           "slitMirrorCells": [
             {
-              "row": 4,
-              "col": 2
+              "row": 3,
+              "col": 4
             }
           ],
-          "optimalBulbs": 4,
-          "maxBulbs": 4,
-          "parScore": 4,
-          "difficultyRank": 67
+          "optimalBulbs": 2,
+          "maxBulbs": 2,
+          "parScore": 2,
+          "difficultyRank": 65
         },
         {
-          "id": "ch8_l5",
+          "id": "ch8_l3",
           "chapterId": "ch8",
-          "title": "深空折返",
+          "title": "墙阵镜迂",
           "gridSize": 8,
           "radiusSet": [
             1.0
           ],
           "blockedCells": [
             {
-              "row": 2,
-              "col": 4
+              "row": 0,
+              "col": 7
+            },
+            {
+              "row": 3,
+              "col": 3
             },
             {
               "row": 5,
-              "col": 2
+              "col": 7
+            },
+            {
+              "row": 7,
+              "col": 4
             }
           ],
           "targetMask": [
             {
               "row": 1,
-              "col": 2
+              "col": 3
             },
             {
-              "row": 6,
+              "row": 2,
               "col": 5
             },
             {
-              "row": 3,
-              "col": 7
+              "row": 2,
+              "col": 2
+            },
+            {
+              "row": 4,
+              "col": 1
+            },
+            {
+              "row": 5,
+              "col": 1
             }
           ],
           "mirrorCells": [
             {
               "row": 4,
               "col": 3,
-              "direction": "up"
+              "direction": "right"
+            },
+            {
+              "row": 5,
+              "col": 5,
+              "direction": "right"
+            },
+            {
+              "row": 3,
+              "col": 4,
+              "direction": "right"
+            }
+          ],
+          "slitMirrorCells": [
+            {
+              "row": 2,
+              "col": 4
+            }
+          ],
+          "optimalBulbs": 2,
+          "maxBulbs": 2,
+          "parScore": 2,
+          "difficultyRank": 66
+        },
+        {
+          "id": "ch8_l4",
+          "chapterId": "ch8",
+          "title": "迂回深阱",
+          "gridSize": 8,
+          "radiusSet": [
+            1.0
+          ],
+          "blockedCells": [
+            {
+              "row": 0,
+              "col": 0
+            },
+            {
+              "row": 0,
+              "col": 5
+            },
+            {
+              "row": 1,
+              "col": 2
+            },
+            {
+              "row": 2,
+              "col": 0
+            },
+            {
+              "row": 3,
+              "col": 7
+            },
+            {
+              "row": 5,
+              "col": 6
+            },
+            {
+              "row": 6,
+              "col": 3
+            },
+            {
+              "row": 7,
+              "col": 0
+            },
+            {
+              "row": 7,
+              "col": 6
+            }
+          ],
+          "targetMask": [
+            {
+              "row": 1,
+              "col": 4
+            },
+            {
+              "row": 2,
+              "col": 5
+            },
+            {
+              "row": 3,
+              "col": 4
+            },
+            {
+              "row": 3,
+              "col": 2
+            },
+            {
+              "row": 4,
+              "col": 4
+            }
+          ],
+          "mirrorCells": [
+            {
+              "row": 4,
+              "col": 4,
+              "direction": "down"
+            },
+            {
+              "row": 2,
+              "col": 1,
+              "direction": "right"
             }
           ],
           "slitMirrorCells": [
             {
               "row": 3,
+              "col": 3
+            }
+          ],
+          "optimalBulbs": 2,
+          "maxBulbs": 2,
+          "parScore": 2,
+          "difficultyRank": 67
+        },
+        {
+          "id": "ch8_l5",
+          "chapterId": "ch8",
+          "title": "长缝三引",
+          "gridSize": 8,
+          "radiusSet": [
+            1.0
+          ],
+          "blockedCells": [
+            {
+              "row": 0,
+              "col": 7
+            },
+            {
+              "row": 3,
+              "col": 7
+            },
+            {
+              "row": 7,
+              "col": 0
+            },
+            {
+              "row": 7,
+              "col": 6
+            }
+          ],
+          "targetMask": [
+            {
+              "row": 3,
+              "col": 5
+            },
+            {
+              "row": 3,
+              "col": 2
+            },
+            {
+              "row": 5,
               "col": 4
+            },
+            {
+              "row": 5,
+              "col": 3
+            },
+            {
+              "row": 5,
+              "col": 1
+            }
+          ],
+          "mirrorCells": [
+            {
+              "row": 1,
+              "col": 3,
+              "direction": "down"
+            },
+            {
+              "row": 2,
+              "col": 3,
+              "direction": "up"
+            },
+            {
+              "row": 4,
+              "col": 5,
+              "direction": "down"
+            },
+            {
+              "row": 4,
+              "col": 4,
+              "direction": "right"
+            }
+          ],
+          "slitMirrorCells": [
+            {
+              "row": 5,
+              "col": 2
             }
           ],
           "optimalBulbs": 3,
@@ -3626,91 +4575,133 @@
         {
           "id": "ch8_l6",
           "chapterId": "ch8",
-          "title": "疏星长卷",
-          "gridSize": 8,
-          "radiusSet": [
-            1.0
-          ],
-          "blockedCells": [],
-          "targetMask": [
-            {
-              "row": 1,
-              "col": 3
-            },
-            {
-              "row": 3,
-              "col": 6
-            },
-            {
-              "row": 5,
-              "col": 1
-            },
-            {
-              "row": 6,
-              "col": 4
-            },
-            {
-              "row": 0,
-              "col": 6
-            }
-          ],
-          "mirrorCells": [
-            {
-              "row": 2,
-              "col": 2,
-              "direction": "left"
-            }
-          ],
-          "slitMirrorCells": [
-            {
-              "row": 4,
-              "col": 4
-            }
-          ],
-          "optimalBulbs": 5,
-          "maxBulbs": 5,
-          "parScore": 5,
-          "difficultyRank": 69
-        },
-        {
-          "id": "ch8_l7",
-          "chapterId": "ch8",
-          "title": "光楔穿心",
+          "title": "变奏交响",
           "gridSize": 8,
           "radiusSet": [
             1.0
           ],
           "blockedCells": [
             {
-              "row": 3,
-              "col": 2
-            }
-          ],
-          "targetMask": [
+              "row": 0,
+              "col": 7
+            },
             {
               "row": 2,
               "col": 7
             },
             {
               "row": 5,
-              "col": 0
+              "col": 7
             },
             {
               "row": 7,
               "col": 4
             }
           ],
-          "mirrorCells": [
+          "targetMask": [
+            {
+              "row": 3,
+              "col": 5
+            },
+            {
+              "row": 3,
+              "col": 1
+            },
             {
               "row": 4,
-              "col": 4,
+              "col": 3
+            },
+            {
+              "row": 5,
+              "col": 5
+            }
+          ],
+          "mirrorCells": [
+            {
+              "row": 1,
+              "col": 5,
               "direction": "right"
+            },
+            {
+              "row": 2,
+              "col": 4,
+              "direction": "down"
             }
           ],
           "slitMirrorCells": [
             {
+              "row": 3,
+              "col": 2
+            }
+          ],
+          "optimalBulbs": 2,
+          "maxBulbs": 2,
+          "parScore": 2,
+          "difficultyRank": 69
+        },
+        {
+          "id": "ch8_l7",
+          "chapterId": "ch8",
+          "title": "侧移冕光",
+          "gridSize": 8,
+          "radiusSet": [
+            1.0
+          ],
+          "blockedCells": [
+            {
+              "row": 0,
+              "col": 7
+            },
+            {
+              "row": 3,
+              "col": 2
+            },
+            {
               "row": 4,
               "col": 5
+            },
+            {
+              "row": 7,
+              "col": 1
+            },
+            {
+              "row": 7,
+              "col": 7
+            }
+          ],
+          "targetMask": [
+            {
+              "row": 2,
+              "col": 4
+            },
+            {
+              "row": 3,
+              "col": 1
+            },
+            {
+              "row": 4,
+              "col": 2
+            },
+            {
+              "row": 5,
+              "col": 5
+            },
+            {
+              "row": 5,
+              "col": 2
+            }
+          ],
+          "mirrorCells": [
+            {
+              "row": 1,
+              "col": 5,
+              "direction": "down"
+            }
+          ],
+          "slitMirrorCells": [
+            {
+              "row": 5,
+              "col": 4
             }
           ],
           "optimalBulbs": 3,
@@ -3721,7 +4712,78 @@
         {
           "id": "ch8_l8",
           "chapterId": "ch8",
-          "title": "域外回风",
+          "title": "穿心高墙",
+          "gridSize": 8,
+          "radiusSet": [
+            1.0
+          ],
+          "blockedCells": [
+            {
+              "row": 0,
+              "col": 2
+            },
+            {
+              "row": 2,
+              "col": 3
+            },
+            {
+              "row": 4,
+              "col": 5
+            },
+            {
+              "row": 6,
+              "col": 6
+            },
+            {
+              "row": 7,
+              "col": 4
+            }
+          ],
+          "targetMask": [
+            {
+              "row": 3,
+              "col": 5
+            },
+            {
+              "row": 3,
+              "col": 1
+            },
+            {
+              "row": 4,
+              "col": 3
+            },
+            {
+              "row": 5,
+              "col": 5
+            }
+          ],
+          "mirrorCells": [
+            {
+              "row": 1,
+              "col": 5,
+              "direction": "right"
+            },
+            {
+              "row": 2,
+              "col": 4,
+              "direction": "down"
+            }
+          ],
+          "slitMirrorCells": [
+            {
+              "row": 3,
+              "col": 2
+            }
+          ],
+          "optimalBulbs": 3,
+          "maxBulbs": 3,
+          "parScore": 3,
+          "difficultyRank": 71
+        },
+        {
+          "id": "ch8_l9",
+          "chapterId": "ch8",
+          "title": "碎光争鸣",
           "gridSize": 8,
           "radiusSet": [
             1.0
@@ -3733,101 +4795,80 @@
             },
             {
               "row": 0,
-              "col": 7
+              "col": 5
             },
-            {
-              "row": 7,
-              "col": 0
-            },
-            {
-              "row": 7,
-              "col": 7
-            }
-          ],
-          "targetMask": [
-            {
-              "row": 2,
-              "col": 4
-            },
-            {
-              "row": 4,
-              "col": 6
-            },
-            {
-              "row": 5,
-              "col": 3
-            }
-          ],
-          "mirrorCells": [
             {
               "row": 1,
-              "col": 4,
-              "direction": "right"
+              "col": 2
             },
-            {
-              "row": 6,
-              "col": 3,
-              "direction": "left"
-            }
-          ],
-          "slitMirrorCells": [
-            {
-              "row": 4,
-              "col": 4
-            }
-          ],
-          "optimalBulbs": 3,
-          "maxBulbs": 3,
-          "parScore": 3,
-          "difficultyRank": 71
-        },
-        {
-          "id": "ch8_l9",
-          "chapterId": "ch8",
-          "title": "星潮散尽",
-          "gridSize": 8,
-          "radiusSet": [
-            1.0
-          ],
-          "blockedCells": [],
-          "targetMask": [
             {
               "row": 2,
-              "col": 1
-            },
-            {
-              "row": 5,
-              "col": 6
+              "col": 0
             },
             {
               "row": 3,
-              "col": 3
+              "col": 6
             },
             {
-              "row": 1,
-              "col": 7
+              "row": 5,
+              "col": 0
             },
             {
               "row": 6,
-              "col": 0
+              "col": 2
+            },
+            {
+              "row": 6,
+              "col": 7
+            },
+            {
+              "row": 7,
+              "col": 5
+            }
+          ],
+          "targetMask": [
+            {
+              "row": 1,
+              "col": 4
+            },
+            {
+              "row": 2,
+              "col": 5
+            },
+            {
+              "row": 3,
+              "col": 4
+            },
+            {
+              "row": 3,
+              "col": 2
+            },
+            {
+              "row": 4,
+              "col": 4
             }
           ],
           "mirrorCells": [
             {
               "row": 4,
-              "col": 2,
+              "col": 4,
               "direction": "down"
+            },
+            {
+              "row": 2,
+              "col": 1,
+              "direction": "right"
             }
           ],
           "slitMirrorCells": [
             {
-              "row": 4,
-              "col": 5
+              "row": 3,
+              "col": 3
             }
           ],
-          "optimalBulbs": 5,
-          "maxBulbs": 5,
-          "parScore": 5,
+          "optimalBulbs": 2,
+          "maxBulbs": 2,
+          "parScore": 2,
           "difficultyRank": 72
         }
       ]
@@ -3839,237 +4880,22 @@
         {
           "id": "ch9_l1",
           "chapterId": "ch9",
-          "title": "极轨试炼",
+          "title": "渊折镜渡",
           "gridSize": 8,
           "radiusSet": [
             1.0
           ],
           "blockedCells": [
             {
-              "row": 3,
-              "col": 3
+              "row": 0,
+              "col": 0
             },
-            {
-              "row": 4,
-              "col": 4
-            }
-          ],
-          "targetMask": [
             {
               "row": 0,
-              "col": 2
-            },
-            {
-              "row": 7,
               "col": 5
             },
-            {
-              "row": 2,
-              "col": 7
-            },
-            {
-              "row": 5,
-              "col": 0
-            }
-          ],
-          "mirrorCells": [
-            {
-              "row": 2,
-              "col": 4,
-              "direction": "up"
-            }
-          ],
-          "slitMirrorCells": [
-            {
-              "row": 4,
-              "col": 3
-            }
-          ],
-          "optimalBulbs": 4,
-          "maxBulbs": 4,
-          "parScore": 4,
-          "difficultyRank": 73
-        },
-        {
-          "id": "ch9_l2",
-          "chapterId": "ch9",
-          "title": "镂光迷宫",
-          "gridSize": 8,
-          "radiusSet": [
-            1.0
-          ],
-          "blockedCells": [],
-          "targetMask": [
             {
               "row": 1,
-              "col": 2
-            },
-            {
-              "row": 2,
-              "col": 5
-            },
-            {
-              "row": 5,
-              "col": 4
-            },
-            {
-              "row": 6,
-              "col": 1
-            },
-            {
-              "row": 4,
-              "col": 7
-            }
-          ],
-          "mirrorCells": [
-            {
-              "row": 3,
-              "col": 4,
-              "direction": "right"
-            }
-          ],
-          "slitMirrorCells": [
-            {
-              "row": 4,
-              "col": 4
-            }
-          ],
-          "optimalBulbs": 5,
-          "maxBulbs": 5,
-          "parScore": 5,
-          "difficultyRank": 74
-        },
-        {
-          "id": "ch9_l3",
-          "chapterId": "ch9",
-          "title": "双缝竞速",
-          "gridSize": 8,
-          "radiusSet": [
-            1.0
-          ],
-          "blockedCells": [],
-          "targetMask": [
-            {
-              "row": 2,
-              "col": 3
-            },
-            {
-              "row": 5,
-              "col": 5
-            },
-            {
-              "row": 3,
-              "col": 0
-            },
-            {
-              "row": 4,
-              "col": 7
-            }
-          ],
-          "mirrorCells": [],
-          "slitMirrorCells": [
-            {
-              "row": 3,
-              "col": 4
-            },
-            {
-              "row": 4,
-              "col": 3
-            }
-          ],
-          "optimalBulbs": 4,
-          "maxBulbs": 4,
-          "parScore": 4,
-          "difficultyRank": 75
-        },
-        {
-          "id": "ch9_l4",
-          "chapterId": "ch9",
-          "title": "镜渊倒影",
-          "gridSize": 8,
-          "radiusSet": [
-            1.0
-          ],
-          "blockedCells": [
-            {
-              "row": 0,
-              "col": 0
-            },
-            {
-              "row": 0,
-              "col": 7
-            },
-            {
-              "row": 7,
-              "col": 0
-            },
-            {
-              "row": 7,
-              "col": 7
-            }
-          ],
-          "targetMask": [
-            {
-              "row": 2,
-              "col": 2
-            },
-            {
-              "row": 5,
-              "col": 5
-            },
-            {
-              "row": 0,
-              "col": 5
-            },
-            {
-              "row": 7,
-              "col": 2
-            }
-          ],
-          "mirrorCells": [
-            {
-              "row": 3,
-              "col": 5,
-              "direction": "left"
-            },
-            {
-              "row": 4,
-              "col": 2,
-              "direction": "right"
-            }
-          ],
-          "slitMirrorCells": [
-            {
-              "row": 3,
-              "col": 3
-            }
-          ],
-          "optimalBulbs": 4,
-          "maxBulbs": 4,
-          "parScore": 4,
-          "difficultyRank": 76
-        },
-        {
-          "id": "ch9_l5",
-          "chapterId": "ch9",
-          "title": "寂夜将曙",
-          "gridSize": 8,
-          "radiusSet": [
-            1.0
-          ],
-          "blockedCells": [
-            {
-              "row": 1,
-              "col": 4
-            }
-          ],
-          "targetMask": [
-            {
-              "row": 0,
-              "col": 0
-            },
-            {
-              "row": 7,
               "col": 7
             },
             {
@@ -4077,12 +4903,108 @@
               "col": 6
             },
             {
+              "row": 5,
+              "col": 0
+            },
+            {
+              "row": 5,
+              "col": 6
+            },
+            {
+              "row": 6,
+              "col": 3
+            },
+            {
+              "row": 7,
+              "col": 0
+            },
+            {
+              "row": 7,
+              "col": 6
+            }
+          ],
+          "targetMask": [
+            {
+              "row": 5,
+              "col": 2
+            },
+            {
               "row": 4,
               "col": 1
             },
             {
+              "row": 3,
+              "col": 2
+            },
+            {
+              "row": 3,
+              "col": 4
+            },
+            {
               "row": 2,
               "col": 2
+            }
+          ],
+          "mirrorCells": [
+            {
+              "row": 1,
+              "col": 4,
+              "direction": "left"
+            }
+          ],
+          "slitMirrorCells": [
+            {
+              "row": 3,
+              "col": 3
+            }
+          ],
+          "optimalBulbs": 2,
+          "maxBulbs": 2,
+          "parScore": 2,
+          "difficultyRank": 73
+        },
+        {
+          "id": "ch9_l2",
+          "chapterId": "ch9",
+          "title": "偕行缝引",
+          "gridSize": 8,
+          "radiusSet": [
+            1.0
+          ],
+          "blockedCells": [
+            {
+              "row": 0,
+              "col": 7
+            },
+            {
+              "row": 4,
+              "col": 2
+            },
+            {
+              "row": 7,
+              "col": 1
+            },
+            {
+              "row": 7,
+              "col": 7
+            }
+          ],
+          "targetMask": [
+            {
+              "row": 5,
+              "col": 5
+            },
+            {
+              "row": 3,
+              "col": 1
+            },
+            {
+              "row": 3,
+              "col": 5
+            },
+            {
+              "row": 2,
+              "col": 3
             }
           ],
           "mirrorCells": [
@@ -4090,223 +5012,552 @@
               "row": 5,
               "col": 3,
               "direction": "down"
-            }
-          ],
-          "slitMirrorCells": [
-            {
-              "row": 3,
-              "col": 4
-            }
-          ],
-          "optimalBulbs": 5,
-          "maxBulbs": 5,
-          "parScore": 5,
-          "difficultyRank": 77
-        },
-        {
-          "id": "ch9_l6",
-          "chapterId": "ch9",
-          "title": "终点前奏",
-          "gridSize": 8,
-          "radiusSet": [
-            1.0
-          ],
-          "blockedCells": [],
-          "targetMask": [
+            },
             {
               "row": 1,
-              "col": 6
-            },
-            {
-              "row": 6,
-              "col": 1
-            },
-            {
-              "row": 4,
-              "col": 0
-            },
-            {
-              "row": 3,
-              "col": 7
-            },
-            {
-              "row": 0,
-              "col": 4
-            }
-          ],
-          "mirrorCells": [
-            {
-              "row": 2,
-              "col": 3,
-              "direction": "right"
-            },
-            {
-              "row": 5,
-              "col": 4,
-              "direction": "left"
+              "col": 1,
+              "direction": "up"
             }
           ],
           "slitMirrorCells": [
             {
-              "row": 4,
-              "col": 4
+              "row": 3,
+              "col": 2
             }
           ],
-          "optimalBulbs": 5,
-          "maxBulbs": 5,
-          "parScore": 5,
-          "difficultyRank": 78
+          "optimalBulbs": 2,
+          "maxBulbs": 2,
+          "parScore": 2,
+          "difficultyRank": 74
         },
         {
-          "id": "ch9_l7",
+          "id": "ch9_l3",
           "chapterId": "ch9",
-          "title": "碎镜拼图",
+          "title": "镜阱重布",
           "gridSize": 8,
           "radiusSet": [
             1.0
           ],
           "blockedCells": [
             {
-              "row": 2,
-              "col": 6
-            },
-            {
-              "row": 5,
-              "col": 1
-            }
-          ],
-          "targetMask": [
-            {
-              "row": 2,
-              "col": 1
-            },
-            {
-              "row": 5,
-              "col": 6
-            },
-            {
               "row": 0,
-              "col": 3
+              "col": 7
             },
-            {
-              "row": 7,
-              "col": 4
-            }
-          ],
-          "mirrorCells": [
             {
               "row": 3,
-              "col": 3,
-              "direction": "up"
-            }
-          ],
-          "slitMirrorCells": [
-            {
-              "row": 4,
-              "col": 4
-            }
-          ],
-          "optimalBulbs": 4,
-          "maxBulbs": 4,
-          "parScore": 4,
-          "difficultyRank": 79
-        },
-        {
-          "id": "ch9_l8",
-          "chapterId": "ch9",
-          "title": "朔光余响",
-          "gridSize": 8,
-          "radiusSet": [
-            1.0
-          ],
-          "blockedCells": [],
-          "targetMask": [
-            {
-              "row": 2,
-              "col": 4
-            },
-            {
-              "row": 4,
-              "col": 2
+              "col": 3
             },
             {
               "row": 5,
               "col": 7
             },
             {
-              "row": 3,
+              "row": 7,
+              "col": 4
+            }
+          ],
+          "targetMask": [
+            {
+              "row": 5,
+              "col": 3
+            },
+            {
+              "row": 4,
               "col": 1
             },
             {
-              "row": 6,
+              "row": 4,
+              "col": 4
+            },
+            {
+              "row": 2,
+              "col": 5
+            },
+            {
+              "row": 1,
               "col": 5
             }
           ],
           "mirrorCells": [
             {
-              "row": 1,
+              "row": 2,
               "col": 3,
+              "direction": "left"
+            },
+            {
+              "row": 1,
+              "col": 1,
+              "direction": "left"
+            },
+            {
+              "row": 3,
+              "col": 2,
               "direction": "left"
             }
           ],
           "slitMirrorCells": [
             {
               "row": 4,
-              "col": 3
+              "col": 2
             }
           ],
-          "optimalBulbs": 4,
-          "maxBulbs": 4,
-          "parScore": 4,
-          "difficultyRank": 80
+          "optimalBulbs": 2,
+          "maxBulbs": 2,
+          "parScore": 2,
+          "difficultyRank": 75
         },
         {
-          "id": "ch9_l9",
+          "id": "ch9_l4",
           "chapterId": "ch9",
-          "title": "冕光自许",
+          "title": "四折深底",
           "gridSize": 8,
           "radiusSet": [
             1.0
           ],
-          "blockedCells": [],
+          "blockedCells": [
+            {
+              "row": 0,
+              "col": 0
+            },
+            {
+              "row": 0,
+              "col": 5
+            },
+            {
+              "row": 1,
+              "col": 7
+            },
+            {
+              "row": 3,
+              "col": 6
+            },
+            {
+              "row": 5,
+              "col": 0
+            },
+            {
+              "row": 5,
+              "col": 6
+            },
+            {
+              "row": 6,
+              "col": 3
+            },
+            {
+              "row": 7,
+              "col": 0
+            },
+            {
+              "row": 7,
+              "col": 6
+            }
+          ],
           "targetMask": [
             {
-              "row": 1,
-              "col": 1
-            },
-            {
-              "row": 1,
-              "col": 6
-            },
-            {
-              "row": 6,
-              "col": 1
-            },
-            {
-              "row": 6,
-              "col": 6
+              "row": 5,
+              "col": 2
             },
             {
               "row": 4,
+              "col": 1
+            },
+            {
+              "row": 3,
+              "col": 2
+            },
+            {
+              "row": 3,
+              "col": 4
+            },
+            {
+              "row": 2,
+              "col": 2
+            }
+          ],
+          "mirrorCells": [
+            {
+              "row": 2,
+              "col": 2,
+              "direction": "up"
+            },
+            {
+              "row": 4,
+              "col": 5,
+              "direction": "left"
+            }
+          ],
+          "slitMirrorCells": [
+            {
+              "row": 3,
+              "col": 3
+            }
+          ],
+          "optimalBulbs": 2,
+          "maxBulbs": 2,
+          "parScore": 2,
+          "difficultyRank": 76
+        },
+        {
+          "id": "ch9_l5",
+          "chapterId": "ch9",
+          "title": "三引缝潮",
+          "gridSize": 8,
+          "radiusSet": [
+            1.0
+          ],
+          "blockedCells": [
+            {
+              "row": 0,
+              "col": 7
+            },
+            {
+              "row": 4,
+              "col": 4
+            },
+            {
+              "row": 7,
+              "col": 0
+            },
+            {
+              "row": 7,
+              "col": 6
+            }
+          ],
+          "targetMask": [
+            {
+              "row": 3,
+              "col": 1
+            },
+            {
+              "row": 3,
+              "col": 4
+            },
+            {
+              "row": 1,
+              "col": 2
+            },
+            {
+              "row": 1,
+              "col": 3
+            },
+            {
+              "row": 1,
+              "col": 5
+            }
+          ],
+          "mirrorCells": [
+            {
+              "row": 5,
+              "col": 3,
+              "direction": "up"
+            },
+            {
+              "row": 4,
+              "col": 3,
+              "direction": "down"
+            },
+            {
+              "row": 2,
+              "col": 1,
+              "direction": "up"
+            },
+            {
+              "row": 2,
+              "col": 2,
+              "direction": "left"
+            }
+          ],
+          "slitMirrorCells": [
+            {
+              "row": 1,
+              "col": 4
+            }
+          ],
+          "optimalBulbs": 3,
+          "maxBulbs": 3,
+          "parScore": 3,
+          "difficultyRank": 77
+        },
+        {
+          "id": "ch9_l6",
+          "chapterId": "ch9",
+          "title": "交响变盘",
+          "gridSize": 8,
+          "radiusSet": [
+            1.0
+          ],
+          "blockedCells": [
+            {
+              "row": 0,
+              "col": 7
+            },
+            {
+              "row": 3,
+              "col": 7
+            },
+            {
+              "row": 5,
+              "col": 7
+            },
+            {
+              "row": 7,
+              "col": 4
+            }
+          ],
+          "targetMask": [
+            {
+              "row": 3,
+              "col": 1
+            },
+            {
+              "row": 3,
+              "col": 5
+            },
+            {
+              "row": 2,
+              "col": 3
+            },
+            {
+              "row": 1,
+              "col": 1
+            }
+          ],
+          "mirrorCells": [
+            {
+              "row": 5,
+              "col": 1,
+              "direction": "left"
+            },
+            {
+              "row": 4,
+              "col": 2,
+              "direction": "up"
+            }
+          ],
+          "slitMirrorCells": [
+            {
+              "row": 3,
+              "col": 4
+            }
+          ],
+          "optimalBulbs": 2,
+          "maxBulbs": 2,
+          "parScore": 2,
+          "difficultyRank": 78
+        },
+        {
+          "id": "ch9_l7",
+          "chapterId": "ch9",
+          "title": "冕环旁照",
+          "gridSize": 8,
+          "radiusSet": [
+            1.0
+          ],
+          "blockedCells": [
+            {
+              "row": 0,
+              "col": 7
+            },
+            {
+              "row": 3,
+              "col": 2
+            },
+            {
+              "row": 4,
+              "col": 7
+            },
+            {
+              "row": 7,
+              "col": 1
+            },
+            {
+              "row": 7,
+              "col": 7
+            }
+          ],
+          "targetMask": [
+            {
+              "row": 4,
+              "col": 2
+            },
+            {
+              "row": 3,
+              "col": 5
+            },
+            {
+              "row": 2,
+              "col": 4
+            },
+            {
+              "row": 1,
+              "col": 1
+            },
+            {
+              "row": 1,
               "col": 4
             }
           ],
           "mirrorCells": [
             {
-              "row": 3,
-              "col": 2,
-              "direction": "right"
+              "row": 5,
+              "col": 1,
+              "direction": "up"
             }
           ],
           "slitMirrorCells": [
             {
-              "row": 4,
-              "col": 5
+              "row": 1,
+              "col": 2
             }
           ],
-          "optimalBulbs": 5,
-          "maxBulbs": 5,
-          "parScore": 5,
+          "optimalBulbs": 3,
+          "maxBulbs": 3,
+          "parScore": 3,
+          "difficultyRank": 79
+        },
+        {
+          "id": "ch9_l8",
+          "chapterId": "ch9",
+          "title": "叠幕连心",
+          "gridSize": 8,
+          "radiusSet": [
+            1.0
+          ],
+          "blockedCells": [
+            {
+              "row": 0,
+              "col": 0
+            },
+            {
+              "row": 2,
+              "col": 1
+            },
+            {
+              "row": 4,
+              "col": 3
+            },
+            {
+              "row": 6,
+              "col": 4
+            },
+            {
+              "row": 7,
+              "col": 4
+            }
+          ],
+          "targetMask": [
+            {
+              "row": 3,
+              "col": 1
+            },
+            {
+              "row": 3,
+              "col": 5
+            },
+            {
+              "row": 2,
+              "col": 3
+            },
+            {
+              "row": 1,
+              "col": 1
+            }
+          ],
+          "mirrorCells": [
+            {
+              "row": 5,
+              "col": 1,
+              "direction": "left"
+            },
+            {
+              "row": 4,
+              "col": 2,
+              "direction": "up"
+            }
+          ],
+          "slitMirrorCells": [
+            {
+              "row": 3,
+              "col": 4
+            }
+          ],
+          "optimalBulbs": 3,
+          "maxBulbs": 3,
+          "parScore": 3,
+          "difficultyRank": 80
+        },
+        {
+          "id": "ch9_l9",
+          "chapterId": "ch9",
+          "title": "镜脊分流",
+          "gridSize": 8,
+          "radiusSet": [
+            1.0
+          ],
+          "blockedCells": [
+            {
+              "row": 0,
+              "col": 2
+            },
+            {
+              "row": 2,
+              "col": 1
+            },
+            {
+              "row": 3,
+              "col": 3
+            },
+            {
+              "row": 4,
+              "col": 7
+            },
+            {
+              "row": 7,
+              "col": 1
+            },
+            {
+              "row": 7,
+              "col": 7
+            }
+          ],
+          "targetMask": [
+            {
+              "row": 4,
+              "col": 2
+            },
+            {
+              "row": 3,
+              "col": 5
+            },
+            {
+              "row": 2,
+              "col": 4
+            },
+            {
+              "row": 1,
+              "col": 1
+            },
+            {
+              "row": 1,
+              "col": 4
+            }
+          ],
+          "mirrorCells": [
+            {
+              "row": 5,
+              "col": 1,
+              "direction": "up"
+            }
+          ],
+          "slitMirrorCells": [
+            {
+              "row": 1,
+              "col": 2
+            }
+          ],
+          "optimalBulbs": 3,
+          "maxBulbs": 3,
+          "parScore": 3,
           "difficultyRank": 81
         }
       ]
@@ -4319,52 +5570,19 @@
           "id": "ch10_l1",
           "chapterId": "ch10",
           "title": "话唠小灯",
-          "gridSize": 8,
+          "gridSize": 5,
           "radiusSet": [
             1.0
           ],
-          "blockedCells": [
-            {
-              "row": 2,
-              "col": 2
-            },
-            {
-              "row": 2,
-              "col": 5
-            },
-            {
-              "row": 5,
-              "col": 2
-            },
-            {
-              "row": 5,
-              "col": 5
-            }
-          ],
+          "blockedCells": [],
           "targetMask": [
             {
-              "row": 4,
-              "col": 4
+              "row": 2,
+              "col": 2
             }
           ],
-          "mirrorCells": [
-            {
-              "row": 3,
-              "col": 4,
-              "direction": "right"
-            },
-            {
-              "row": 4,
-              "col": 3,
-              "direction": "up"
-            }
-          ],
-          "slitMirrorCells": [
-            {
-              "row": 3,
-              "col": 3
-            }
-          ],
+          "mirrorCells": [],
+          "slitMirrorCells": [],
           "optimalBulbs": 1,
           "maxBulbs": 1,
           "parScore": 1,

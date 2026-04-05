@@ -44,13 +44,18 @@ struct LightingEngine {
             }
         }
 
-        // 斜镜：灯与镜格正交相邻（十字照明）时参与反射，按平面镜（/ 与 \）求出射方向；可多镜迭代。
+        // 斜镜：正交相邻有灯即可反射；可多镜迭代。
         var mirrorGrowing = true
         while mirrorGrowing {
             mirrorGrowing = false
             for mirror in level.mirrorCells ?? [] {
                 let mirrorPoint = mirror.point
                 guard litCells.contains(mirrorPoint), !blocked.contains(mirrorPoint) else { continue }
+                guard MirrorReflectionGate.allowsReflection(
+                    mirrorPoint: mirrorPoint,
+                    direction: mirror.direction,
+                    bulbs: bulbs
+                ) else { continue }
                 for bulb in bulbs {
                     guard GameRules.isOrthogonalPlusAdjacent(mirrorPoint, bulb) else { continue }
                     guard let reflected = reflectedGridNeighbor(
@@ -64,6 +69,15 @@ struct LightingEngine {
                         mirrorGrowing = true
                     }
                 }
+            }
+        }
+
+        // 无正交相邻灯但仅被远处十字扫到镜面时，镜格不计入亮格（含镜面目标）。
+        for mirror in level.mirrorCells ?? [] {
+            let p = mirror.point
+            guard litCells.contains(p), !blocked.contains(p) else { continue }
+            if !MirrorReflectionGate.allowsReflection(mirrorPoint: p, direction: mirror.direction, bulbs: bulbs) {
+                litCells.remove(p)
             }
         }
 

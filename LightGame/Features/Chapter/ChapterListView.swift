@@ -122,6 +122,9 @@ struct ChapterListView: View {
                 loadLevels()
                 syncInfiniteToolbarBounce()
             }
+            .task {
+                await premiumUnlock.refreshEntitlements()
+            }
             .onChange(of: progressStore.completedLevels.count) { _ in
                 loadLevels()
                 syncInfiniteToolbarBounce()

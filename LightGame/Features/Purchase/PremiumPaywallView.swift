@@ -134,6 +134,7 @@ struct PremiumPaywallView: View {
                 if premium.storeProduct == nil {
                     await premium.loadProducts()
                 }
+                await premium.refreshEntitlements()
             }
             .onChange(of: premium.isUnlocked) { unlocked in
                 guard unlocked else { return }

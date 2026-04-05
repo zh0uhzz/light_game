@@ -1,7 +1,7 @@
 import Foundation
 
 /// 独立小入口：用与 App 相同的 Core 源码在 macOS 上编译运行，按 10 关一批跑完 1…999，
-/// 对每关再调用 MinimumBulbSolver 确认有解（生成器内已校验，此为双重确认）。
+/// 对每关调用 MinimumBulbSolver 确认在 maxBulbs 内存在解（无限关为逆向生成，与国内 HUD「至多 max 盏」一致）。
 @main
 enum VerifyInfiniteMain {
     static func main() {
@@ -15,7 +15,7 @@ enum VerifyInfiniteMain {
                 continue
             }
             for lv in chunk {
-                if MinimumBulbSolver.findMinimumBulbs(level: lv, maxK: lv.maxBulbs).map({ $0 >= 1 }) != true {
+                if MinimumBulbSolver.findMinimumBulbs(level: lv, maxK: lv.maxBulbs, maxEvaluations: 400_000).map({ $0 >= 1 }) != true {
                     failed.append(lv.id)
                 }
             }

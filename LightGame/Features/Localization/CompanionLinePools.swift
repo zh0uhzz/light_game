@@ -22,6 +22,7 @@ enum CompanionLinePools {
             return [
                 "这是最后一关哦。",
                 "只有中间那一格等你点亮，像把所有路收成一点光。",
+                "我们是好朋友啦，一直是。",
                 "第九章走完了对吧？那这一步就只为自己点亮就好。",
                 "不用急，也不用证明什么，点下去就像跟这段旅程握手。",
                 "谢谢你一路点到这儿。",
@@ -32,6 +33,7 @@ enum CompanionLinePools {
             return [
                 "This is the last story stage.",
                 "Only the center waits—like collecting every path into one glow.",
+                "We’re good friends—and always have been.",
                 "Chapter 9’s done? Then this tap is just for you.",
                 "No rush, no proof—just shaking hands with the journey.",
                 "Thanks for tapping all this way.",
@@ -42,6 +44,7 @@ enum CompanionLinePools {
             return [
                 "最後の本編ステージです。",
                 "まんなかだけ、静かに待っています。ここまでの光を、ひとつに。",
+                "ずっと友だちだよ、これからもね。",
                 "第9章まで来られましたね。今回は、ご自身のためにどうぞ。",
                 "急がなくて大丈夫です。旅に、そっと礼を言うくらいで。",
                 "ここまでご一緒できて、ありがとうございます。",
@@ -52,6 +55,7 @@ enum CompanionLinePools {
             return [
                 "스토리 마지막 스테이지야.",
                 "가운데만 기다려—지금까지의 빛을 한 점으로.",
+                "우린 좋은 친구야, 늘 그랬고 앞으로도.",
                 "9장도 끝냈지? 이번엔 너 자신을 위해.",
                 "급할 거 없어. 여정이랑 악수하는 정도면 돼.",
                 "여기까지 눌러줘서 고마워.",

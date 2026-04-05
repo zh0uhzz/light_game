@@ -49,9 +49,17 @@ final class PremiumUnlockService: ObservableObject {
         var unlocked = false
         for await result in Transaction.currentEntitlements {
             guard case .verified(let t) = result else { continue }
-            if t.productID == Self.unlockProductId {
+            if t.productID == Self.unlockProductId, t.revocationDate == nil {
                 unlocked = true
                 break
+            }
+        }
+        // 沙盒 / 部分环境下 entitlement 列表滞后：再查该商品最近一笔已验证交易。
+        if !unlocked {
+            if let latest = await Transaction.latest(for: Self.unlockProductId),
+               case .verified(let t) = latest,
+               t.revocationDate == nil {
+                unlocked = true
             }
         }
         isUnlocked = unlocked
@@ -70,6 +78,9 @@ final class PremiumUnlockService: ObservableObject {
                 let transaction = try Self.verify(verification)
                 guard transaction.productID == Self.unlockProductId else { return }
                 await transaction.finish()
+                // 先乐观更新 UI；再同步权益，避免沙盒下 entitlement 列表短暂滞后导致仍显示未购买。
+                isUnlocked = true
+                try? await AppStore.sync()
                 await refreshEntitlements()
             case .userCancelled, .pending:
                 break

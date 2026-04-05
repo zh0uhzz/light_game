@@ -989,6 +989,16 @@ enum AppLocalizedStrings {
         }
     }
 
+    /// 无限模式：盏数上限内点亮即可（不必用尽）。
+    static func hudInfiniteBulbCap(_ lang: AppContentLanguage, max: Int) -> String {
+        switch lang {
+        case .zhHans: return "最多用 \(max) 盏灯泡点亮全部目标"
+        case .en: return "Light all goals with at most \(max) bulbs"
+        case .ja: return "電球は最大\(max)個まで、全部照らそう"
+        case .ko: return "전구 최대 \(max)개로 목표 전부"
+        }
+    }
+
     static func winTargetsLit(_ lang: AppContentLanguage) -> String {
         switch lang {
         case .zhHans: return "目标格已全部照亮。"
@@ -1096,7 +1106,7 @@ enum AppLocalizedStrings {
                 "2. 每个灯泡都会照亮自身与上下左右相邻格（十字形，最多 5 格），对角不相邻。",
                 "3. 你必须在灯泡上限内点亮所有目标格子才能过关。",
                 "4. 障碍格不可放置也不会被点亮。",
-                "5. 斜面镜与折射缝镜格不可放灯；斜镜按镜面反射，缝镜仅左右贯穿到对侧一格，上下不透。",
+                "5. 斜面镜与折射缝镜格不可放灯；斜镜在镜面格正交紧贴处有灯即可向邻格反射（多侧入射时格上会更亮）；缝镜仅左右贯穿到对侧一格，上下不透。",
             ]
         case .en:
             return [
@@ -1104,7 +1114,7 @@ enum AppLocalizedStrings {
                 "2. Each bulb lights itself and a small + (up to five cells)—not diagonals.",
                 "3. Light every goal before you run out of bulbs.",
                 "4. Walls never hold bulbs or catch light.",
-                "5. Mirrors and slits can’t hold bulbs; mirrors bend beams; slits step sideways one cell only.",
+                "5. Mirrors and slits can’t hold bulbs; a slant mirror reflects when a bulb sits orthogonally next to it (brighter when more sides feed it); slits step sideways one cell only.",
             ]
         case .ja:
             return [
@@ -1112,7 +1122,7 @@ enum AppLocalizedStrings {
                 "2. 電球は自分のマスと上下左右（最大5マス）を照らします。斜めは照らせません。",
                 "3. 電球の上限のうちで、すべてのゴールを照らすとクリアです。",
                 "4. 壁のマスには置けず、光も届きません。",
-                "5. 鏡・すきまのマスにも置けません。鏡は光を反射し、すきまは横に1マスだけ通ります。",
+                "5. 鏡・すきまのマスにも置けません。斜め鏡は隣接マスに電球があれば反射し、複数方向だとより明るく見えます。すきまは横に1マスだけ通ります。",
             ]
         case .ko:
             return [
@@ -1120,7 +1130,7 @@ enum AppLocalizedStrings {
                 "2. 전구는 자기 칸과 상하좌우(최대 5칸)를 밝혀요. 대각선은 안 돼요.",
                 "3. 전구 개수 안에서 모든 목표 칸을 밝히면 클리어예요.",
                 "4. 벽 칸에는 두지 못하고 빛도 닿지 않아요.",
-                "5. 거울/틈 칸에도 둘 수 없어요. 거울은 반사하고, 틈은 옆으로 한 칸만 통과해요.",
+                "5. 거울/틈 칸에도 둘 수 없어요. 비스듬한 거울은 옆 칸에 전구가 붙어 있으면 반사하고, 여러 방향이 더 밝아 보여요. 틈은 옆으로 한 칸만 통과해요.",
             ]
         }
     }

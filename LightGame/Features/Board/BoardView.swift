@@ -57,6 +57,8 @@ struct BoardView: View {
     @State private var showLimitHint = false
     @State private var hintBannerText: String?
     @State private var showLightIntro = false
+    /// 欢迎层自动消失用的任务，用户点屏提前关闭时需 cancel，防止重复改 `showLightIntro`。
+    @State private var lightIntroAutoDismissWork: DispatchWorkItem?
     @State private var companionSessionStart = Date()
     @State private var currentIndex: Int
 
@@ -147,7 +149,9 @@ struct BoardView: View {
         }
         .overlay {
             if showLightIntro {
-                LevelWelcomeOverlay(line: welcomePlayfulLine)
+                LevelWelcomeOverlay(line: welcomePlayfulLine) {
+                    dismissLightIntroFromUserTap()
+                }
                     .transition(.asymmetric(
                         insertion: .opacity.combined(with: .scale(scale: 0.94)),
                         removal: .opacity.combined(with: .scale(scale: 0.97))
@@ -375,14 +379,26 @@ struct BoardView: View {
     }
 
     private func applyLightIntroIfNeeded(forLevelId levelId: String) {
+        lightIntroAutoDismissWork?.cancel()
+        lightIntroAutoDismissWork = nil
         guard shouldShowLightIntro(forLevelId: levelId) else {
             showLightIntro = false
             return
         }
         showLightIntro = true
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+        let work = DispatchWorkItem {
             withAnimation(.easeOut(duration: 0.5)) { showLightIntro = false }
+            lightIntroAutoDismissWork = nil
         }
+        lightIntroAutoDismissWork = work
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5, execute: work)
+    }
+
+    private func dismissLightIntroFromUserTap() {
+        lightIntroAutoDismissWork?.cancel()
+        lightIntroAutoDismissWork = nil
+        audioManager.playClick()
+        withAnimation(.easeOut(duration: 0.35)) { showLightIntro = false }
     }
 
     /// 进关 / 换关时随机一句俏皮话，避免和导航标题抢同一块「说明文字」。
@@ -530,7 +546,11 @@ struct BoardView: View {
                     )
                 }
             }
-            if level.shouldEnforceOptimalBulbs {
+            if level.chapterId == "inf" {
+                Label(AppLocalizedStrings.hudInfiniteBulbCap(lang, max: level.maxBulbs), systemImage: "sparkles")
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(Color(red: 1.0, green: 0.78, blue: 0.38).opacity(0.95))
+            } else if level.shouldEnforceOptimalBulbs {
                 Label(AppLocalizedStrings.hudOptimalBulbs(lang, max: level.maxBulbs), systemImage: "sparkles")
                     .font(.subheadline.weight(.semibold))
                     .foregroundStyle(Color(red: 1.0, green: 0.78, blue: 0.38).opacity(0.95))
@@ -651,14 +671,15 @@ struct BoardView: View {
                 HStack(spacing: BoardPlayArea.cellGap) {
                     ForEach(0..<size, id: \.self) { col in
                         let point = GridPoint(row: row, col: col)
+                        let isLitDisplay = viewModel.isCellLitForDisplay(at: point)
                         CellView(
                             point: point,
                             cellType: viewModel.cellType(at: point),
-                            isLit: viewModel.litCells.contains(point),
+                            isLit: isLitDisplay,
                             hasBulb: viewModel.bulbs.contains(point),
                             isTarget: viewModel.isTarget(point),
                             isHintMasked: viewModel.isHintMasked(point),
-                            lightTier: viewModel.lightVisualTier(at: point),
+                            lightTier: viewModel.lightVisualTierForDisplay(at: point, displayLit: isLitDisplay),
                             mirrorDirection: viewModel.mirrorDirection(at: point),
                             mirrorCellVisual: viewModel.mirrorCellVisual(at: point),
                             hasSlitMirror: viewModel.hasSlitMirror(at: point),
@@ -995,68 +1016,76 @@ private struct CellView: View {
 
     private var litInnerGlowOpacity: Double {
         guard lightTier != nil, isLit, !isHintMasked else { return 0 }
-        let o = [0.5, 0.46, 0.43, 0.4]
+        /// 第 3 档为「无十字邻灯的间接照亮」（反射/缝等），略提亮以免看起来像未点亮。
+        let o = [0.5, 0.46, 0.54, 0.4]
         let t = min(max(0, lightTier ?? 0), 3)
         return o[t]
     }
 
     private var litOuterGlowOpacity: Double {
         guard lightTier != nil, isLit, !isHintMasked else { return 0 }
-        let o = [0.2, 0.18, 0.16, 0.14]
+        let o = [0.2, 0.18, 0.22, 0.14]
         let t = min(max(0, lightTier ?? 0), 3)
         return o[t]
     }
 
-    /// 仅单侧直射：用半格裁剪；两侧同时直射见 `mirrorCellVisual?.illuminateFull`。
-    private var mirrorUsesHalfClip: Bool {
-        guard mirrorDirection != nil, isLit, !isHintMasked,
-              let v = mirrorCellVisual else { return false }
-        return !v.illuminateFull && v.halfIncomingDelta != nil
+    /// 镜格在「非整格泛光」时用暗底 + 矩形暖色再按半扇裁剪（与上午稳定版一致；`Shape.fill(渐变)` 在部分系统上整层不渲染）。
+    private var mirrorShowsHalfBrightCellBody: Bool {
+        guard mirrorDirection != nil, cellType == .playable, isLit, !isHintMasked else { return false }
+        return !(mirrorCellVisual?.illuminateFull ?? false)
     }
 
     var body: some View {
         ZStack {
-            if mirrorUsesHalfClip, let inc = mirrorCellVisual?.halfIncomingDelta, let dir = mirrorDirection {
+            if mirrorShowsHalfBrightCellBody, let dir = mirrorDirection {
                 let isSlash = dir == .up || dir == .right
+                let inG = max(litInnerGlowOpacity, 0.48)
+                let outG = max(litOuterGlowOpacity, 0.2)
+                let warmGlow = Rectangle()
+                    .fill(
+                        Color(
+                            red: 0.92 * Double(litShade),
+                            green: 0.82 * Double(litShade),
+                            blue: 0.35 * Double(litShade)
+                        )
+                    )
+                    .frame(width: cellSide, height: cellSide)
+                    .overlay(
+                        Rectangle()
+                            .fill(
+                                RadialGradient(
+                                    colors: [
+                                        Color(red: 1.0, green: 0.95, blue: 0.55, opacity: inG),
+                                        Color(red: 1.0, green: 0.90, blue: 0.45, opacity: outG),
+                                        Color.clear
+                                    ],
+                                    center: .center,
+                                    startRadius: 1,
+                                    endRadius: glowEndRadius
+                                )
+                            )
+                            .blur(radius: min(glowBlur, 2.5))
+                    )
                 ZStack {
                     RoundedRectangle(cornerRadius: cellCorner)
                         .fill(Color(red: 0.26, green: 0.27, blue: 0.32))
                         .frame(width: cellSide, height: cellSide)
-                    ZStack {
-                        RoundedRectangle(cornerRadius: cellCorner)
-                            .fill(
-                                Color(
-                                    red: 0.92 * Double(litShade),
-                                    green: 0.82 * Double(litShade),
-                                    blue: 0.35 * Double(litShade)
+                    if let inc = mirrorCellVisual?.halfIncomingDelta {
+                        warmGlow
+                            .clipShape(
+                                MirrorIncomingLitHalfShape(
+                                    isSlash: isSlash,
+                                    incomingDCol: CGFloat(inc.dCol),
+                                    incomingDRow: CGFloat(inc.dRow)
                                 )
                             )
-                            .frame(width: cellSide, height: cellSide)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: cellCorner)
-                                    .fill(
-                                        RadialGradient(
-                                            colors: [
-                                                Color(red: 1.0, green: 0.95, blue: 0.55, opacity: litInnerGlowOpacity),
-                                                Color(red: 1.0, green: 0.90, blue: 0.45, opacity: litOuterGlowOpacity),
-                                                Color.clear
-                                            ],
-                                            center: .center,
-                                            startRadius: 1,
-                                            endRadius: glowEndRadius
-                                        )
-                                    )
-                                    .blur(radius: glowBlur)
-                            )
+                    } else {
+                        warmGlow
+                            .clipShape(MirrorStaticLitHalfShape(direction: dir))
                     }
-                    .clipShape(
-                        MirrorIncomingLitHalfShape(
-                            isSlash: isSlash,
-                            incomingDCol: CGFloat(inc.dCol),
-                            incomingDRow: CGFloat(inc.dRow)
-                        )
-                    )
                 }
+                .frame(width: cellSide, height: cellSide)
+                .compositingGroup()
             } else {
                 RoundedRectangle(cornerRadius: cellCorner)
                     .fill(backgroundColor)
@@ -1107,13 +1136,13 @@ private struct CellView: View {
                     incomingDRow: mirrorCellVisual?.halfIncomingDelta?.dRow,
                     incomingDCol: mirrorCellVisual?.halfIncomingDelta?.dCol
                 )
-                    .frame(width: cellSide, height: cellSide)
+                .frame(width: cellSide, height: cellSide)
             }
             if hasSlitMirror, cellType == .playable, !isHintMasked {
-                SlitMirrorView(isActive: isLit)
-                    .frame(width: cellSide, height: cellSide)
+                SlitMirrorView(isActive: isLit, sideLength: cellSide)
             }
         }
+        .frame(width: cellSide, height: cellSide)
         .clipShape(RoundedRectangle(cornerRadius: cellCorner))
     }
 
@@ -1137,6 +1166,40 @@ private struct CellView: View {
     }
 }
 
+/// 与 `MirrorDividerView.reflectedHalfFillPath` 相同几何：无入射向量时作镜格半扇裁剪，与分隔线层对齐。
+private struct MirrorStaticLitHalfShape: Shape {
+    var direction: MirrorDirection
+
+    func path(in rect: CGRect) -> Path {
+        let w = rect.width
+        let h = rect.height
+        var p = Path()
+        switch direction {
+        case .up:
+            p.move(to: CGPoint(x: 0, y: 0))
+            p.addLine(to: CGPoint(x: w, y: 0))
+            p.addLine(to: CGPoint(x: w, y: h))
+            p.closeSubpath()
+        case .down:
+            p.move(to: CGPoint(x: 0, y: 0))
+            p.addLine(to: CGPoint(x: 0, y: h))
+            p.addLine(to: CGPoint(x: w, y: h))
+            p.closeSubpath()
+        case .left:
+            p.move(to: CGPoint(x: 0, y: 0))
+            p.addLine(to: CGPoint(x: w, y: 0))
+            p.addLine(to: CGPoint(x: 0, y: h))
+            p.closeSubpath()
+        case .right:
+            p.move(to: CGPoint(x: w, y: 0))
+            p.addLine(to: CGPoint(x: w, y: h))
+            p.addLine(to: CGPoint(x: 0, y: h))
+            p.closeSubpath()
+        }
+        return p
+    }
+}
+
 /// 以镜面为界，朝向灯泡来源的一侧为「被照亮的半格」（与 `LightingEngine` 物理侧一致）。
 private struct MirrorIncomingLitHalfShape: Shape {
     var isSlash: Bool
@@ -1146,7 +1209,7 @@ private struct MirrorIncomingLitHalfShape: Shape {
     func path(in rect: CGRect) -> Path {
         let w = rect.width
         let h = rect.height
-        guard w > 1, h > 1 else { return Path() }
+        guard w > 0.25, h > 0.25 else { return Path() }
         let cx = w * 0.5
         let cy = h * 0.5
         let vx = incomingDCol
@@ -1198,6 +1261,7 @@ private struct MirrorIncomingLitHalfShape: Shape {
 }
 
 /// 反射镜：斜线表示镜面；单侧直射强调半格，两侧同时直射则整格暖色。
+/// 外层由 `CellView` 固定 `frame(cellSide)`，内部用 `GeometryReader` 取尺寸（与上午可工作版本一致）。
 private struct MirrorDividerView: View {
     let direction: MirrorDirection
     let isReflecting: Bool
@@ -1208,40 +1272,40 @@ private struct MirrorDividerView: View {
 
     var body: some View {
         GeometryReader { geo in
-            let w = geo.size.width
-            let h = geo.size.height
+            let w = max(1, geo.size.width)
+            let h = max(1, geo.size.height)
             let isSlash = direction == .up || direction == .right
             let gradient = LinearGradient(
                 colors: [
-                    Color(red: 1.0, green: 0.88, blue: 0.4, opacity: isReflecting ? 0.55 : 0.06),
-                    Color(red: 1.0, green: 0.75, blue: 0.25, opacity: isReflecting ? 0.28 : 0.03)
+                    Color(red: 1.0, green: 0.88, blue: 0.4, opacity: isReflecting ? 0.62 : 0.08),
+                    Color(red: 1.0, green: 0.75, blue: 0.25, opacity: isReflecting ? 0.34 : 0.04)
                 ],
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing
             )
             ZStack {
-                if illuminateFullCell && isReflecting {
-                    RoundedRectangle(cornerRadius: min(w, h) * 0.12)
-                        .fill(gradient)
-                        .padding(1)
-                } else if let ir = incomingDRow, let ic = incomingDCol {
-                    MirrorIncomingLitHalfShape(
-                        isSlash: isSlash,
-                        incomingDCol: CGFloat(ic),
-                        incomingDRow: CGFloat(ir)
-                    )
-                    .fill(gradient)
-                } else {
-                    reflectedHalfFillPath(width: w, height: h)
-                        .fill(gradient)
-                }
-                Group {
-                    mirrorLinePath(width: w, height: h)
-                        .stroke(
-                            Color(red: 0.75, green: 0.95, blue: 0.88, opacity: isReflecting ? 0.95 : 0.45),
-                            lineWidth: max(0.7, min(w, h) * 0.036)
+                if isReflecting {
+                    if illuminateFullCell {
+                        RoundedRectangle(cornerRadius: min(w, h) * 0.12)
+                            .fill(gradient)
+                            .padding(1)
+                    } else if let ir = incomingDRow, let ic = incomingDCol {
+                        MirrorIncomingLitHalfShape(
+                            isSlash: isSlash,
+                            incomingDCol: CGFloat(ic),
+                            incomingDRow: CGFloat(ir)
                         )
+                        .fill(gradient)
+                    } else {
+                        reflectedHalfFillPath(width: w, height: h)
+                            .fill(gradient)
+                    }
                 }
+                mirrorLinePath(width: w, height: h)
+                    .stroke(
+                        Color(red: 0.75, green: 0.95, blue: 0.88, opacity: isReflecting ? 0.95 : 0.45),
+                        lineWidth: max(0.7, min(w, h) * 0.036)
+                    )
             }
         }
     }
@@ -1288,40 +1352,42 @@ private struct MirrorDividerView: View {
 }
 
 /// 水平缝镜：上下深色挡条 + 中部横向镜条，表示仅左右可透光贯穿。
+/// 不使用 `GeometryReader`，避免真机/HStack 布局首帧读出 0 宽高导致折射纹整层不画。
 private struct SlitMirrorView: View {
     let isActive: Bool
+    let sideLength: CGFloat
 
     var body: some View {
-        GeometryReader { geo in
-            let w = geo.size.width
-            let h = geo.size.height
-            let band = max(2.0, h * 0.2)
-            let lineW = max(0.8, min(w, h) * 0.028)
-            ZStack {
-                VStack(spacing: 0) {
-                    Rectangle()
-                        .fill(Color(red: 0.12, green: 0.13, blue: 0.16).opacity(isActive ? 0.72 : 0.55))
-                        .frame(height: band)
-                    Spacer(minLength: 0)
-                    Rectangle()
-                        .fill(Color(red: 0.12, green: 0.13, blue: 0.16).opacity(isActive ? 0.72 : 0.55))
-                        .frame(height: band)
-                }
+        let w = max(1, sideLength)
+        let h = max(1, sideLength)
+        let band = max(2.0, h * 0.2)
+        let lineW = max(0.8, min(w, h) * 0.028)
+        ZStack {
+            VStack(spacing: 0) {
                 Rectangle()
-                    .fill(
-                        LinearGradient(
-                            colors: [
-                                Color(red: 0.82, green: 0.93, blue: 0.9, opacity: isActive ? 0.92 : 0.5),
-                                Color(red: 0.55, green: 0.78, blue: 0.86, opacity: isActive ? 0.75 : 0.38)
-                            ],
-                            startPoint: .leading,
-                            endPoint: .trailing
-                        )
-                    )
-                    .frame(height: lineW)
-                    .shadow(color: Color.cyan.opacity(isActive ? 0.35 : 0.12), radius: 2, y: 0)
+                    .fill(Color(red: 0.12, green: 0.13, blue: 0.16).opacity(isActive ? 0.72 : 0.55))
+                    .frame(height: band)
+                Spacer(minLength: 0)
+                Rectangle()
+                    .fill(Color(red: 0.12, green: 0.13, blue: 0.16).opacity(isActive ? 0.72 : 0.55))
+                    .frame(height: band)
             }
+            Rectangle()
+                .fill(
+                    LinearGradient(
+                        colors: [
+                            Color(red: 0.82, green: 0.93, blue: 0.9, opacity: isActive ? 0.92 : 0.5),
+                            Color(red: 0.55, green: 0.78, blue: 0.86, opacity: isActive ? 0.75 : 0.38)
+                        ],
+                        startPoint: .leading,
+                        endPoint: .trailing
+                    )
+                )
+                .frame(height: lineW)
+                .shadow(color: Color.cyan.opacity(isActive ? 0.35 : 0.12), radius: 2, y: 0)
         }
+        .frame(width: w, height: h)
+        .compositingGroup()
     }
 }
 
@@ -1391,13 +1457,15 @@ private struct WinCelebrationSparkles: View {
 /// 进关 / 换关：居中轻提示，不与导航大标题抢「第二行说明」。
 private struct LevelWelcomeOverlay: View {
     let line: String
+    let onDismiss: () -> Void
     @State private var cardIn = false
 
     var body: some View {
         ZStack {
             Color.black.opacity(0.12)
                 .ignoresSafeArea()
-                .allowsHitTesting(false)
+                .contentShape(Rectangle())
+                .onTapGesture { onDismiss() }
 
             VStack(spacing: 14) {
                 TimelineView(.animation(minimumInterval: 1.0 / 30.0)) { ctx in
@@ -1450,6 +1518,8 @@ private struct LevelWelcomeOverlay: View {
             .shadow(color: Color.black.opacity(0.2), radius: 16, y: 6)
             .scaleEffect(cardIn ? 1 : 0.88)
             .opacity(cardIn ? 1 : 0)
+            .contentShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
+            .onTapGesture { onDismiss() }
         }
         .onAppear {
             withAnimation(.spring(response: 0.52, dampingFraction: 0.78)) {

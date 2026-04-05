@@ -84,6 +84,12 @@ def ortho_plus_adjacent(a, b):
     return False
 
 
+def mirror_gate_passes(mrow, mcol, _direction, bulbs_t):
+    """斜镜：正交相邻有灯即可反射（与 Swift `MirrorReflectionGate` 一致）。"""
+    bulbs_adj = [b for b in bulbs_t if ortho_plus_adjacent((mrow, mcol), b)]
+    return bool(bulbs_adj)
+
+
 def lit_cells(level, bulbs):
     n = level["gridSize"]
     blocked = blocked_set(level)
@@ -101,6 +107,8 @@ def lit_cells(level, bulbs):
             mrow, mcol, direction = m["row"], m["col"], m["direction"]
             if (mrow, mcol) not in lit or (mrow, mcol) in blocked:
                 continue
+            if not mirror_gate_passes(mrow, mcol, direction, bulbs_t):
+                continue
             for bulb in bulbs_t:
                 if not ortho_plus_adjacent((mrow, mcol), bulb):
                     continue
@@ -110,6 +118,13 @@ def lit_cells(level, bulbs):
                     grew = True
         if not grew:
             break
+
+    for m in mirrors:
+        mrow, mcol, direction = m["row"], m["col"], m["direction"]
+        if (mrow, mcol) not in lit or (mrow, mcol) in blocked:
+            continue
+        if not mirror_gate_passes(mrow, mcol, direction, bulbs_t):
+            lit.discard((mrow, mcol))
 
     slit_cells = {(p["row"], p["col"]) for p in (level.get("slitMirrorCells") or [])}
     while True:

@@ -177,6 +177,30 @@ final class BoardViewModel: ObservableObject {
         )
     }
 
+    /// 盘面亮格 UI：`litCells` 为主；缝格在「同排紧贴一侧有灯泡」时也应视为点亮（与十字照明一致），避免单侧折射关卡的缝层不激活。
+    func isCellLitForDisplay(at point: GridPoint) -> Bool {
+        if litCells.contains(point) { return true }
+        return slitMirrorOrthNeighborBulbLit(point)
+    }
+
+    func lightVisualTierForDisplay(at point: GridPoint, displayLit: Bool) -> Int? {
+        GameRules.lightVisualTier(cell: point, bulbs: bulbs, isLit: displayLit)
+    }
+
+    private func slitMirrorOrthNeighborBulbLit(_ point: GridPoint) -> Bool {
+        guard level.slitMirrorPoints.contains(point) else { return false }
+        if hintMaskedCells.contains(point) { return false }
+        let blocked = Set(level.blockedCells)
+        if blocked.contains(point) { return false }
+        let r = point.row
+        let c = point.col
+        for b in bulbs where b.row == r {
+            if blocked.contains(b) || hintMaskedCells.contains(b) { continue }
+            if abs(b.col - c) == 1 { return true }
+        }
+        return false
+    }
+
     func cellType(at point: GridPoint) -> CellType {
         Set(level.blockedCells).contains(point) ? .blocked : .playable
     }
@@ -226,13 +250,13 @@ final class BoardViewModel: ObservableObject {
         }
 
         let directBuckets = Set(bulbsInRange.compactMap { sideBucket($0) })
-        let (indirectBuckets, indirectDeltas) = indirectMirrorSideData(at: point, sideBucket: sideBucket)
-        let allBuckets = directBuckets.union(indirectBuckets)
+        let (_, indirectDeltas) = indirectMirrorSideData(at: point, sideBucket: sideBucket)
+        /// 仅由**相邻灯泡直射**决定整格亮；缝/他镜带来的间接入射只参与半格方向，避免误合并成「整格」后 UI 不再画半扇。
         /// 两盏灯分别在镜格「上下」与「左右」相邻时，几何上已从两垂直边直入，但 slash / 反斜镜像下 `sideBucket` 可能同为 1 或同为 -1，仍需整格亮。
         let multiAxisDirect = bulbsInRange.contains { $0.row == point.row }
             && bulbsInRange.contains { $0.col == point.col }
 
-        if multiAxisDirect || (allBuckets.contains(1) && allBuckets.contains(-1)) {
+        if multiAxisDirect || (directBuckets.contains(1) && directBuckets.contains(-1)) {
             return MirrorCellVisual(illuminateFull: true, halfIncomingDelta: nil)
         }
 

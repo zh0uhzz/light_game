@@ -73,6 +73,9 @@ struct SettingsView: View {
             .ignoresSafeArea()
         )
         .navigationTitle(AppLocalizedStrings.settingsTitle(lang))
+        .task {
+            await premiumUnlock.refreshEntitlements()
+        }
         .alert(AppLocalizedStrings.resetConfirmTitle(lang), isPresented: $showResetAlert) {
             Button(AppLocalizedStrings.resetConfirmDestructive(lang), role: .destructive) {
                 audioManager.playClick()

@@ -1,17 +1,15 @@
 import Foundation
 
-/// 无限关 `inf_l{n}`：**按关卡编号的确定性种子**随机摆盘 → 用 `MinimumBulbSolver` 验证必有解 → 缓存；
-/// 若在预算内找不到可解图则回退到预设池（仍保证可解）。同一 `n` 永远同一盘面。
+/// 无限关 `inf_l{n}`：**从参考答案逆向生成**——先随机盘面与若干盏「后台答案灯」、再取照亮区域的一小部分为目标；
+/// 用 `LightingEngine` 仅做一次正向验证（答案能否通关），**不再**枚举最小盏数。同一 `n` 仍确定性可复现。
+/// 通关规则：`optimalBulbs == nil` 时视为「盏数不超过 `maxBulbs` 且点亮全部目标」即可（与主线「恰为最优盏」不同）。
 enum InfiniteLevelGenerator {
     private static var cache: [Int: Level] = [:]
     private static let cacheLock = NSLock()
 
-    /// 单次随机生成的枚举预算（略小可减卡顿；过小易退回预设）。
-    private static let solveEvalBudget = 130_000
-    private static let maxProceduralAttempts = 56
-    private static let proceduralMaxOptimal = 8
+    private static let maxProceduralAttempts = 48
 
-    /// 无限模式分块加载：按全局序号闭区间连续生成（缓存 + 可解校验与 `level(number:)` 相同）。
+    /// 无限模式分块加载：按全局序号闭区间连续生成（缓存 + 与 `level(number:)` 相同）。
     static func levels(inGlobalRange range: ClosedRange<Int>) -> [Level] {
         precondition(range.lowerBound >= 1 && range.upperBound >= range.lowerBound)
         return range.map { level(number: $0) }
@@ -36,7 +34,7 @@ enum InfiniteLevelGenerator {
         cacheLock.unlock()
 
         let built: Level
-        if let proc = generateVerifiedRandom(number: number) {
+        if let proc = generateFromAnswerReverse(number: number) {
             built = proc
         } else {
             built = levelFromPresetFallback(number: number)
@@ -47,40 +45,50 @@ enum InfiniteLevelGenerator {
         return built
     }
 
-    /// 随机几何 + 求解器：仅在存在 `k≤proceduralMaxOptimal` 的解时返回。
-    private static func generateVerifiedRandom(number: Int) -> Level? {
+    // MARK: - 逆向生成（答案 → 目标）
+
+    private static func generateFromAnswerReverse(number: Int) -> Level? {
         for attempt in 0..<maxProceduralAttempts {
-            if let lv = tryRandomLayout(number: number, attempt: attempt) {
+            if let lv = tryAnswerReverseLayout(number: number, attempt: attempt) {
                 return lv
             }
         }
         return nil
     }
 
-    private static func tryRandomLayout(number: Int, attempt: Int) -> Level? {
+    private static func tryAnswerReverseLayout(number: Int, attempt: Int) -> Level? {
         var rng = SplitMix64(seed: mixSeed(UInt64(number), UInt64(attempt)))
-        let n = 6 + rng.nextInt(3)
+        let n = 5 + rng.nextInt(4)
+        /// n=5 为基准；每大一号，障碍/光学件/目标下限略增。
+        let tier = n - 5
+
+        let (blkLo, blkHi) = scaledBlockedRange(gridSize: n, tier: tier)
+        var nBlocked = blkLo + (blkHi >= blkLo ? rng.nextInt(blkHi - blkLo + 1) : 0)
+        nBlocked = min(nBlocked, n * n)
+
         var blocked: Set<GridPoint> = []
-        let nBlk = rng.nextInt(4)
-        for _ in 0..<nBlk {
+        var tries = 0
+        while blocked.count < nBlocked && tries < nBlocked * 30 {
+            tries += 1
             blocked.insert(GridPoint(row: rng.nextInt(n), col: rng.nextInt(n)))
         }
+        guard !blocked.isEmpty else { return nil }
 
+        let maxOptic = scaledMaxSlitsMirrors(gridSize: n, tier: tier)
+        let nSlitsTarget = rng.nextInt(maxOptic + 1)
         var slitPts: Set<GridPoint> = []
-        let nSl = 1 + rng.nextInt(2)
-        for _ in 0..<nSl {
-            guard n > 3 else { break }
-            let row = 1 + rng.nextInt(max(1, n - 2))
-            let col = 1 + rng.nextInt(max(1, n - 2))
-            let p = GridPoint(row: row, col: col)
-            if !blocked.contains(p) {
-                slitPts.insert(p)
-            }
+        tries = 0
+        while slitPts.count < nSlitsTarget && tries < 400 {
+            tries += 1
+            let p = GridPoint(row: rng.nextInt(n), col: rng.nextInt(n))
+            if !blocked.contains(p) { slitPts.insert(p) }
         }
 
+        let nMirrorsTarget = rng.nextInt(maxOptic + 1)
         var mirrors: [MirrorCell] = []
-        let nMir = rng.nextInt(3)
-        for _ in 0..<nMir {
+        tries = 0
+        while mirrors.count < nMirrorsTarget && tries < 600 {
+            tries += 1
             let r = rng.nextInt(n)
             let c = rng.nextInt(n)
             let p = GridPoint(row: r, col: c)
@@ -91,69 +99,166 @@ enum InfiniteLevelGenerator {
         }
 
         let mirrorSet = Set(mirrors.map(\.point))
-        var playable: [GridPoint] = []
-        for r in 0..<n {
-            for c in 0..<n {
-                let p = GridPoint(row: r, col: c)
-                if blocked.contains(p) || mirrorSet.contains(p) || slitPts.contains(p) {
-                    continue
-                }
-                playable.append(p)
-            }
-        }
-        guard playable.count >= 10 else { return nil }
+        let kBulb = weightedAnswerBulbCount(rng: &rng, gridSize: n)
+        guard kBulb >= 2, kBulb <= 7 else { return nil }
 
-        for i in stride(from: playable.count - 1, through: 1, by: -1) {
-            let j = rng.nextInt(i + 1)
-            playable.swapAt(i, j)
-        }
+        guard let answerBulbs = placeAnswerBulbsNearOptics(
+            count: kBulb,
+            gridSize: n,
+            blocked: blocked,
+            mirrorPoints: mirrorSet,
+            slitPoints: slitPts,
+            rng: &rng
+        ) else { return nil }
 
-        let minT = 3
-        let maxT = min(8, playable.count - 2)
-        guard maxT >= minT else { return nil }
-        let tcount = minT + rng.nextInt(maxT - minT + 1)
-        let targets = Array(playable.prefix(tcount))
-
-        let draft = Level(
+        let baseDraft = Level(
             id: "inf_l\(number)",
             chapterId: "inf",
             title: "",
             gridSize: n,
-            maxBulbs: proceduralMaxOptimal,
+            maxBulbs: kBulb,
             radiusSet: [1.0],
             blockedCells: Array(blocked),
-            targetMask: targets,
+            targetMask: [],
             mirrorCells: mirrors.isEmpty ? nil : mirrors,
             slitMirrorCells: slitPts.isEmpty ? nil : Array(slitPts),
-            parScore: 1,
-            optimalBulbs: 1,
+            parScore: kBulb,
+            optimalBulbs: nil,
             difficultyRank: 1
         )
 
-        guard let k = MinimumBulbSolver.findMinimumBulbs(
-            level: draft,
-            maxK: proceduralMaxOptimal,
-            maxEvaluations: solveEvalBudget
-        ), k >= 1 else {
-            return nil
+        let engine = LightingEngine()
+        let lit = engine.litCellsFor(level: baseDraft, bulbs: Set(answerBulbs))
+
+        func isTargetable(_ p: GridPoint) -> Bool {
+            if p.row < 0 || p.col < 0 || p.row >= n || p.col >= n { return false }
+            if blocked.contains(p) || mirrorSet.contains(p) || slitPts.contains(p) { return false }
+            return true
         }
 
+        let litCandidates = lit.filter(isTargetable)
+        let minLitPool = 2 + tier * 2
+        guard litCandidates.count >= minLitPool else { return nil }
+
+        let (tMin, tMaxCap) = scaledTargetRange(gridSize: n, tier: tier, litCount: litCandidates.count)
+        let upper = min(tMaxCap, litCandidates.count)
+        guard upper >= tMin else { return nil }
+        let tcount = tMin + (upper > tMin ? rng.nextInt(upper - tMin + 1) : 0)
+
+        var pool = Array(litCandidates)
+        for i in stride(from: pool.count - 1, through: 1, by: -1) {
+            let j = rng.nextInt(i + 1)
+            pool.swapAt(i, j)
+        }
+        let targets = Array(pool.prefix(tcount))
+
         let dr = targets.count + mirrors.count * 2 + slitPts.count + max(0, 9 - n) + rng.nextInt(6)
-        return Level(
+        let finalLevel = Level(
             id: "inf_l\(number)",
             chapterId: "inf",
             title: "",
             gridSize: n,
-            maxBulbs: k,
+            maxBulbs: kBulb,
             radiusSet: [1.0],
             blockedCells: Array(blocked),
             targetMask: targets,
             mirrorCells: mirrors.isEmpty ? nil : mirrors,
             slitMirrorCells: slitPts.isEmpty ? nil : Array(slitPts),
-            parScore: k,
-            optimalBulbs: k,
+            parScore: kBulb,
+            optimalBulbs: nil,
             difficultyRank: dr
         )
+
+        guard engine.compute(level: finalLevel, bulbs: Set(answerBulbs)).isWin else { return nil }
+        return finalLevel
+    }
+
+    /// n=5：障碍约 2…8（与原逻辑一致）；棋盘越大，障碍越多。
+    private static func scaledBlockedRange(gridSize n: Int, tier: Int) -> (Int, Int) {
+        let lo = 2 + tier
+        let hi = min(8 + tier * 3, max(lo, n * n - 6))
+        return (min(lo, hi), hi)
+    }
+
+    /// 缝 / 镜各自上限：n=5 时 0…6；n 每 +1 上限 +2，封顶随边长。
+    private static func scaledMaxSlitsMirrors(gridSize n: Int, tier: Int) -> Int {
+        min(n + 1, 6 + tier * 2)
+    }
+
+    /// 目标盏数范围：大盘需更多目标、且不超过照亮候选格。
+    private static func scaledTargetRange(gridSize n: Int, tier: Int, litCount: Int) -> (Int, Int) {
+        let tMin = min(2 + tier, litCount)
+        let cap = min(7 + tier * 2, litCount)
+        let tMaxCap = max(tMin, cap)
+        return (tMin, tMaxCap)
+    }
+
+    /// 2–7 盏，3–4 盏权重最高；棋盘越大整体略偏向多盏。
+    private static func weightedAnswerBulbCount(rng: inout SplitMix64, gridSize n: Int) -> Int {
+        let tier = n - 5
+        var r = rng.nextInt(100)
+        r = min(99, r + tier * 6)
+        switch r {
+        case 0..<5: return 2
+        case 5..<32: return 3
+        case 32..<62: return 4
+        case 62..<82: return 5
+        case 82..<94: return 6
+        default: return 7
+        }
+    }
+
+    /// 尽量把答案灯放在折射/反射格的正交邻格（若无光学件则全棋盘可放格随机）。
+    private static func placeAnswerBulbsNearOptics(
+        count k: Int,
+        gridSize n: Int,
+        blocked: Set<GridPoint>,
+        mirrorPoints: Set<GridPoint>,
+        slitPoints: Set<GridPoint>,
+        rng: inout SplitMix64
+    ) -> [GridPoint]? {
+        func playable(_ p: GridPoint) -> Bool {
+            guard p.row >= 0, p.col >= 0, p.row < n, p.col < n else { return false }
+            if blocked.contains(p) || mirrorPoints.contains(p) || slitPoints.contains(p) { return false }
+            return true
+        }
+
+        var allPlayable: [GridPoint] = []
+        for r in 0..<n {
+            for c in 0..<n {
+                let p = GridPoint(row: r, col: c)
+                if playable(p) { allPlayable.append(p) }
+            }
+        }
+        guard allPlayable.count >= k else { return nil }
+
+        let optics = mirrorPoints.union(slitPoints)
+        var nearOptics: [GridPoint] = []
+        var seenNear: Set<GridPoint> = []
+        for o in optics {
+            for d in [(0, 1), (0, -1), (1, 0), (-1, 0)] {
+                let q = GridPoint(row: o.row + d.0, col: o.col + d.1)
+                if playable(q), !seenNear.contains(q) {
+                    seenNear.insert(q)
+                    nearOptics.append(q)
+                }
+            }
+        }
+
+        var bulbs: Set<GridPoint> = []
+        for i in 0..<k {
+            let preferNear = !nearOptics.isEmpty && rng.nextInt(100) < 82
+            let pool: [GridPoint]
+            if preferNear {
+                pool = nearOptics.filter { !bulbs.contains($0) }
+            } else {
+                pool = allPlayable.filter { !bulbs.contains($0) }
+            }
+            let usable = pool.isEmpty ? allPlayable.filter { !bulbs.contains($0) } : pool
+            guard !usable.isEmpty else { return nil }
+            bulbs.insert(usable[rng.nextInt(usable.count)])
+        }
+        return Array(bulbs)
     }
 
     private static func levelFromPresetFallback(number: Int) -> Level {
@@ -172,7 +277,7 @@ enum InfiniteLevelGenerator {
             mirrorCells: p.mirrors,
             slitMirrorCells: p.slits,
             parScore: p.k,
-            optimalBulbs: p.k,
+            optimalBulbs: nil,
             difficultyRank: dr
         )
     }

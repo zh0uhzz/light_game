@@ -42,6 +42,7 @@
 		A10000000000000000000024 /* PremiumUnlockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000029 /* PremiumUnlockService.swift */; };
 		A10000000000000000000025 /* PremiumPaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000000000000000000002A /* PremiumPaywallView.swift */; };
 		A10000000000000000000026 /* CampaignLocalizedTitles.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000000000000000000002C /* CampaignLocalizedTitles.swift */; };
+		A10000000000000000000027 /* MirrorReflectionGate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000000000000000000002D /* MirrorReflectionGate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +87,7 @@
 		A20000000000000000000029 /* PremiumUnlockService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumUnlockService.swift; sourceTree = "<group>"; };
 		A2000000000000000000002A /* PremiumPaywallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumPaywallView.swift; sourceTree = "<group>"; };
 		A2000000000000000000002C /* CampaignLocalizedTitles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignLocalizedTitles.swift; sourceTree = "<group>"; };
+		A2000000000000000000002D /* MirrorReflectionGate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MirrorReflectionGate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				A20000000000000000000004 /* GameRules.swift */,
+				A2000000000000000000002D /* MirrorReflectionGate.swift */,
 			);
 			path = Rules;
 			sourceTree = "<group>";
@@ -377,6 +380,7 @@
 				A10000000000000000000002 /* Cell.swift in Sources */,
 				A10000000000000000000003 /* Level.swift in Sources */,
 				A10000000000000000000004 /* GameRules.swift in Sources */,
+				A10000000000000000000027 /* MirrorReflectionGate.swift in Sources */,
 				A10000000000000000000005 /* LightingEngine.swift in Sources */,
 				A10000000000000000000006 /* WinCondition.swift in Sources */,
 				A10000000000000000000016 /* WinningPlacementAnalyzer.swift in Sources */,

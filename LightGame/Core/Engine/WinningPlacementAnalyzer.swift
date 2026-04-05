@@ -20,7 +20,10 @@ struct WinningPlacementAnalyzer {
         let evalBox = CombinationEvalCounter()
 
         let bulbCounts: [Int]
-        if level.shouldEnforceOptimalBulbs, let opt = level.optimalBulbs {
+        if level.chapterId == "inf" {
+            // 无限关：通关允许多档盏数（≤ maxBulbs）；枚举 0…K 会令组合爆炸，提示只按满预算扫描。
+            bulbCounts = [level.maxBulbs]
+        } else if level.shouldEnforceOptimalBulbs, let opt = level.optimalBulbs {
             bulbCounts = [opt]
         } else {
             bulbCounts = Array(0...level.maxBulbs)
