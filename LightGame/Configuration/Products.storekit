@@ -1,0 +1,47 @@
+{
+  "identifier" : "Products",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "9.90",
+      "familyShareable" : false,
+      "internalID" : "E7B0B0B0",
+      "localizations" : [
+        {
+          "description" : "Unlock Companion and Infinite mode forever.",
+          "displayName" : "Full Unlock",
+          "locale" : "en_US"
+        },
+        {
+          "description" : "永久解锁陪伴模式与无限模式。",
+          "displayName" : "永久会员",
+          "locale" : "zh_Hans"
+        }
+      ],
+      "productID" : "com.nihao.lightgame.full_unlock",
+      "referenceName" : "Full Unlock",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_applicationInternalID" : "com.nihao.lightgame",
+    "_developerTeamID" : "PLACEHOLDER",
+    "_failTransactionsEnabled" : false,
+    "_lastSynchronizedDate" : 0,
+    "_locale" : "zh_CN",
+    "_storefront" : "CHN",
+    "_storeKitErrors" : [
+
+    ],
+    "_timeRate" : 0
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 4,
+    "minor" : 0
+  }
+}

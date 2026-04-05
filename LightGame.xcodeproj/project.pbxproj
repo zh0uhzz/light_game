@@ -1,0 +1,561 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A10000000000000000000001 /* LightGameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000001 /* LightGameApp.swift */; };
+		A10000000000000000000002 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000002 /* Cell.swift */; };
+		A10000000000000000000003 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000003 /* Level.swift */; };
+		A10000000000000000000004 /* GameRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000004 /* GameRules.swift */; };
+		A10000000000000000000005 /* LightingEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000005 /* LightingEngine.swift */; };
+		A10000000000000000000006 /* WinCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000006 /* WinCondition.swift */; };
+		A10000000000000000000007 /* LevelLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000007 /* LevelLoader.swift */; };
+		A10000000000000000000008 /* BoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000008 /* BoardViewModel.swift */; };
+		A10000000000000000000009 /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000009 /* BoardView.swift */; };
+		A1000000000000000000000A /* ChapterListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000000000000000000000A /* ChapterListView.swift */; };
+		A1000000000000000000000B /* ProgressStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000000000000000000000B /* ProgressStore.swift */; };
+		A1000000000000000000000C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2000000000000000000000D /* Assets.xcassets */; };
+		A1000000000000000000000D /* levels_pack_01.json in Resources */ = {isa = PBXBuildFile; fileRef = A2000000000000000000000E /* levels_pack_01.json */; };
+		A1000000000000000000000E /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000010 /* AudioManager.swift */; };
+		A1000000000000000000000F /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000011 /* SettingsView.swift */; };
+		A10000000000000000000010 /* FireflyBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000012 /* FireflyBackgroundView.swift */; };
+		A10000000000000000000011 /* bgm_soft_loop.wav in Resources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000013 /* bgm_soft_loop.wav */; };
+		A10000000000000000000012 /* tap_click.wav in Resources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000014 /* tap_click.wav */; };
+		A10000000000000000000013 /* Soft Cloud Hop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000015 /* Soft Cloud Hop.mp3 */; };
+		A10000000000000000000014 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000016 /* SplashView.swift */; };
+		A10000000000000000000015 /* win_cheer.wav in Resources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000017 /* win_cheer.wav */; };
+		A10000000000000000000016 /* WinningPlacementAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000018 /* WinningPlacementAnalyzer.swift */; };
+		A10000000000000000000017 /* LevelCompanionNarration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000019 /* LevelCompanionNarration.swift */; };
+		A10000000000000000000018 /* InfiniteLevelGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000000000000000000001A /* InfiniteLevelGenerator.swift */; };
+		A1000000000000000000001B /* MinimumBulbSolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000000000000000000001C /* MinimumBulbSolver.swift */; };
+		A1000000000000000000001C /* AchievementsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000000000000000000001D /* AchievementsListView.swift */; };
+		A1000000000000000000001D /* OnboardingIntroFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000000000000000000001E /* OnboardingIntroFlow.swift */; };
+		A1000000000000000000001F /* LocalizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000000000000000000001F /* LocalizationManager.swift */; };
+		A10000000000000000000020 /* AppLocalizedStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000020 /* AppLocalizedStrings.swift */; };
+		A10000000000000000000021 /* LanguageSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000021 /* LanguageSelectionView.swift */; };
+		A10000000000000000000022 /* CompanionLinePools.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000022 /* CompanionLinePools.swift */; };
+		A10000000000000000000023 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000028 /* InfoPlist.strings */; };
+		A10000000000000000000024 /* PremiumUnlockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000029 /* PremiumUnlockService.swift */; };
+		A10000000000000000000025 /* PremiumPaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000000000000000000002A /* PremiumPaywallView.swift */; };
+		A10000000000000000000026 /* CampaignLocalizedTitles.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000000000000000000002C /* CampaignLocalizedTitles.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A20000000000000000000000 /* LightGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LightGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A20000000000000000000001 /* LightGameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightGameApp.swift; sourceTree = "<group>"; };
+		A20000000000000000000002 /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
+		A20000000000000000000003 /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
+		A20000000000000000000004 /* GameRules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRules.swift; sourceTree = "<group>"; };
+		A20000000000000000000005 /* LightingEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightingEngine.swift; sourceTree = "<group>"; };
+		A20000000000000000000006 /* WinCondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinCondition.swift; sourceTree = "<group>"; };
+		A20000000000000000000007 /* LevelLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelLoader.swift; sourceTree = "<group>"; };
+		A20000000000000000000008 /* BoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewModel.swift; sourceTree = "<group>"; };
+		A20000000000000000000009 /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
+		A2000000000000000000000A /* ChapterListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterListView.swift; sourceTree = "<group>"; };
+		A2000000000000000000000B /* ProgressStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressStore.swift; sourceTree = "<group>"; };
+		A2000000000000000000000C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A2000000000000000000000D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A2000000000000000000000E /* levels_pack_01.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = levels_pack_01.json; sourceTree = "<group>"; };
+		A2000000000000000000000F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		A20000000000000000000010 /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
+		A20000000000000000000011 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		A20000000000000000000012 /* FireflyBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireflyBackgroundView.swift; sourceTree = "<group>"; };
+		A20000000000000000000013 /* bgm_soft_loop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bgm_soft_loop.wav; sourceTree = "<group>"; };
+		A20000000000000000000014 /* tap_click.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tap_click.wav; sourceTree = "<group>"; };
+		A20000000000000000000015 /* Soft Cloud Hop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Soft Cloud Hop.mp3"; sourceTree = "<group>"; };
+		A20000000000000000000016 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		A20000000000000000000017 /* win_cheer.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = win_cheer.wav; sourceTree = "<group>"; };
+		A20000000000000000000018 /* WinningPlacementAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinningPlacementAnalyzer.swift; sourceTree = "<group>"; };
+		A20000000000000000000019 /* LevelCompanionNarration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelCompanionNarration.swift; sourceTree = "<group>"; };
+		A2000000000000000000001A /* InfiniteLevelGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfiniteLevelGenerator.swift; sourceTree = "<group>"; };
+		A2000000000000000000001C /* MinimumBulbSolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinimumBulbSolver.swift; sourceTree = "<group>"; };
+		A2000000000000000000001D /* AchievementsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsListView.swift; sourceTree = "<group>"; };
+		A2000000000000000000001E /* OnboardingIntroFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingIntroFlow.swift; sourceTree = "<group>"; };
+		A2000000000000000000001F /* LocalizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationManager.swift; sourceTree = "<group>"; };
+		A20000000000000000000020 /* AppLocalizedStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLocalizedStrings.swift; sourceTree = "<group>"; };
+		A20000000000000000000021 /* LanguageSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectionView.swift; sourceTree = "<group>"; };
+		A20000000000000000000022 /* CompanionLinePools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanionLinePools.swift; sourceTree = "<group>"; };
+		A20000000000000000000024 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A20000000000000000000025 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		A20000000000000000000026 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A20000000000000000000027 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A20000000000000000000029 /* PremiumUnlockService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumUnlockService.swift; sourceTree = "<group>"; };
+		A2000000000000000000002A /* PremiumPaywallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumPaywallView.swift; sourceTree = "<group>"; };
+		A2000000000000000000002C /* CampaignLocalizedTitles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignLocalizedTitles.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A30000000000000000000001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A40000000000000000000001 = {
+			isa = PBXGroup;
+			children = (
+				A40000000000000000000002 /* LightGame */,
+				A40000000000000000000003 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A40000000000000000000002 /* LightGame */ = {
+			isa = PBXGroup;
+			children = (
+				A40000000000000000000004 /* App */,
+				A40000000000000000000005 /* Core */,
+				A40000000000000000000006 /* Features */,
+				A40000000000000000000007 /* Data */,
+				A2000000000000000000000D /* Assets.xcassets */,
+				A2000000000000000000000C /* Info.plist */,
+				A20000000000000000000028 /* InfoPlist.strings */,
+				A2000000000000000000000F /* README.md */,
+			);
+			path = LightGame;
+			sourceTree = "<group>";
+		};
+		A40000000000000000000003 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A20000000000000000000000 /* LightGame.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A40000000000000000000004 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				A20000000000000000000001 /* LightGameApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		A40000000000000000000005 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				A40000000000000000000008 /* Models */,
+				A40000000000000000000009 /* Rules */,
+				A4000000000000000000000A /* Engine */,
+				A4000000000000000000000B /* Level */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		A40000000000000000000006 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				A4000000000000000000000C /* Board */,
+				A4000000000000000000000D /* Chapter */,
+				A4000000000000000000000E /* Progress */,
+				A40000000000000000000014 /* Localization */,
+				A40000000000000000000012 /* Splash */,
+				A4000000000000000000000F /* Audio */,
+				A40000000000000000000010 /* Settings */,
+				A40000000000000000000015 /* Purchase */,
+				A40000000000000000000011 /* Visual */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		A40000000000000000000007 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				A2000000000000000000000E /* levels_pack_01.json */,
+				A20000000000000000000015 /* Soft Cloud Hop.mp3 */,
+				A20000000000000000000017 /* win_cheer.wav */,
+				A20000000000000000000013 /* bgm_soft_loop.wav */,
+				A20000000000000000000014 /* tap_click.wav */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		A40000000000000000000008 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A20000000000000000000002 /* Cell.swift */,
+				A20000000000000000000003 /* Level.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A40000000000000000000009 /* Rules */ = {
+			isa = PBXGroup;
+			children = (
+				A20000000000000000000004 /* GameRules.swift */,
+			);
+			path = Rules;
+			sourceTree = "<group>";
+		};
+		A4000000000000000000000A /* Engine */ = {
+			isa = PBXGroup;
+			children = (
+				A20000000000000000000005 /* LightingEngine.swift */,
+				A20000000000000000000006 /* WinCondition.swift */,
+				A20000000000000000000018 /* WinningPlacementAnalyzer.swift */,
+				A2000000000000000000001A /* InfiniteLevelGenerator.swift */,
+				A2000000000000000000001C /* MinimumBulbSolver.swift */,
+			);
+			path = Engine;
+			sourceTree = "<group>";
+		};
+		A4000000000000000000000B /* Level */ = {
+			isa = PBXGroup;
+			children = (
+				A20000000000000000000007 /* LevelLoader.swift */,
+			);
+			path = Level;
+			sourceTree = "<group>";
+		};
+		A4000000000000000000000C /* Board */ = {
+			isa = PBXGroup;
+			children = (
+				A20000000000000000000008 /* BoardViewModel.swift */,
+				A20000000000000000000009 /* BoardView.swift */,
+				A20000000000000000000019 /* LevelCompanionNarration.swift */,
+			);
+			path = Board;
+			sourceTree = "<group>";
+		};
+		A4000000000000000000000D /* Chapter */ = {
+			isa = PBXGroup;
+			children = (
+				A2000000000000000000000A /* ChapterListView.swift */,
+			);
+			path = Chapter;
+			sourceTree = "<group>";
+		};
+		A4000000000000000000000E /* Progress */ = {
+			isa = PBXGroup;
+			children = (
+				A2000000000000000000000B /* ProgressStore.swift */,
+			);
+			path = Progress;
+			sourceTree = "<group>";
+		};
+		A4000000000000000000000F /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				A20000000000000000000010 /* AudioManager.swift */,
+			);
+			path = Audio;
+			sourceTree = "<group>";
+		};
+		A40000000000000000000010 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				A20000000000000000000011 /* SettingsView.swift */,
+				A2000000000000000000001D /* AchievementsListView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		A40000000000000000000011 /* Visual */ = {
+			isa = PBXGroup;
+			children = (
+				A20000000000000000000012 /* FireflyBackgroundView.swift */,
+			);
+			path = Visual;
+			sourceTree = "<group>";
+		};
+		A40000000000000000000012 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				A20000000000000000000016 /* SplashView.swift */,
+				A2000000000000000000001E /* OnboardingIntroFlow.swift */,
+				A20000000000000000000021 /* LanguageSelectionView.swift */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		A40000000000000000000014 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				A2000000000000000000001F /* LocalizationManager.swift */,
+				A20000000000000000000020 /* AppLocalizedStrings.swift */,
+				A2000000000000000000002C /* CampaignLocalizedTitles.swift */,
+				A20000000000000000000022 /* CompanionLinePools.swift */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
+		A40000000000000000000015 /* Purchase */ = {
+			isa = PBXGroup;
+			children = (
+				A20000000000000000000029 /* PremiumUnlockService.swift */,
+				A2000000000000000000002A /* PremiumPaywallView.swift */,
+			);
+			path = Purchase;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A50000000000000000000001 /* LightGame */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A60000000000000000000002 /* Build configuration list for PBXNativeTarget "LightGame" */;
+			buildPhases = (
+				A30000000000000000000002 /* Sources */,
+				A30000000000000000000001 /* Frameworks */,
+				A30000000000000000000003 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LightGame;
+			productName = LightGame;
+			productReference = A20000000000000000000000 /* LightGame.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A60000000000000000000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					A50000000000000000000001 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+				};
+			};
+			buildConfigurationList = A60000000000000000000003 /* Build configuration list for PBXProject "LightGame" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				ja,
+				ko,
+				"zh-Hans",
+			);
+			mainGroup = A40000000000000000000001;
+			productRefGroup = A40000000000000000000003 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A50000000000000000000001 /* LightGame */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A30000000000000000000003 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1000000000000000000000C /* Assets.xcassets in Resources */,
+				A1000000000000000000000D /* levels_pack_01.json in Resources */,
+				A10000000000000000000013 /* Soft Cloud Hop.mp3 in Resources */,
+				A10000000000000000000015 /* win_cheer.wav in Resources */,
+				A10000000000000000000011 /* bgm_soft_loop.wav in Resources */,
+				A10000000000000000000012 /* tap_click.wav in Resources */,
+				A10000000000000000000023 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A30000000000000000000002 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A10000000000000000000001 /* LightGameApp.swift in Sources */,
+				A10000000000000000000002 /* Cell.swift in Sources */,
+				A10000000000000000000003 /* Level.swift in Sources */,
+				A10000000000000000000004 /* GameRules.swift in Sources */,
+				A10000000000000000000005 /* LightingEngine.swift in Sources */,
+				A10000000000000000000006 /* WinCondition.swift in Sources */,
+				A10000000000000000000016 /* WinningPlacementAnalyzer.swift in Sources */,
+				A10000000000000000000007 /* LevelLoader.swift in Sources */,
+				A10000000000000000000008 /* BoardViewModel.swift in Sources */,
+				A10000000000000000000009 /* BoardView.swift in Sources */,
+				A1000000000000000000000A /* ChapterListView.swift in Sources */,
+				A1000000000000000000000B /* ProgressStore.swift in Sources */,
+				A1000000000000000000000E /* AudioManager.swift in Sources */,
+				A1000000000000000000000F /* SettingsView.swift in Sources */,
+				A10000000000000000000010 /* FireflyBackgroundView.swift in Sources */,
+				A10000000000000000000014 /* SplashView.swift in Sources */,
+				A10000000000000000000017 /* LevelCompanionNarration.swift in Sources */,
+				A10000000000000000000018 /* InfiniteLevelGenerator.swift in Sources */,
+				A1000000000000000000001B /* MinimumBulbSolver.swift in Sources */,
+				A1000000000000000000001C /* AchievementsListView.swift in Sources */,
+				A1000000000000000000001D /* OnboardingIntroFlow.swift in Sources */,
+				A1000000000000000000001F /* LocalizationManager.swift in Sources */,
+				A10000000000000000000020 /* AppLocalizedStrings.swift in Sources */,
+				A10000000000000000000026 /* CampaignLocalizedTitles.swift in Sources */,
+				A10000000000000000000021 /* LanguageSelectionView.swift in Sources */,
+				A10000000000000000000022 /* CompanionLinePools.swift in Sources */,
+				A10000000000000000000024 /* PremiumUnlockService.swift in Sources */,
+				A10000000000000000000025 /* PremiumPaywallView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A20000000000000000000028 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A20000000000000000000024 /* en */,
+				A20000000000000000000025 /* zh-Hans */,
+				A20000000000000000000026 /* ja */,
+				A20000000000000000000027 /* ko */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A70000000000000000000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A70000000000000000000002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A70000000000000000000003 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9VX83PY576;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = LightGame/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nihao.lightgame;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A70000000000000000000004 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9VX83PY576;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = LightGame/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nihao.lightgame;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A60000000000000000000002 /* Build configuration list for PBXNativeTarget "LightGame" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A70000000000000000000003 /* Debug */,
+				A70000000000000000000004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A60000000000000000000003 /* Build configuration list for PBXProject "LightGame" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A70000000000000000000001 /* Debug */,
+				A70000000000000000000002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A60000000000000000000001 /* Project object */;
+}
